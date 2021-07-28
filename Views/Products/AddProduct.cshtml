@@ -1,0 +1,88 @@
+﻿@model ProductFormModel
+
+@{ 
+    ViewBag.Title = "Add Product"; 
+ }
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="ProductCode"></label>
+                <input asp-for="ProductCode" class="form-control" placeholder="03502, 02569, etc...">
+                <span asp-validation-for="ProductCode" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Oxigen Formula Day Care, Repair and Cell Night Care, etc...">
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TradePartnerPrice"></label>
+                <textarea asp-for="TradePartnerPrice" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="TradePartnerPrice" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <textarea asp-for="Price" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="Price" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity"></label>
+                <span asp-validation-for="Quantity" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NetWeight"></label>
+                <input asp-for="NetWeight" class="form-control" placeholder="30 ml, 50 lm, etc...">
+                <span asp-validation-for="NetWeight" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" placeholder="Day care for dry skin. Perfect hydratation for summer months/">
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control" placeholder="Your fine URL here...">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SeriesId"></label>
+                <select asp-for="SeriesId" class="form-control">
+                    @foreach (var series in Model.Series)
+                    {
+                        <option value="@series.Id">@series.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="SeriesId" class="small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProductTypeId"></label>
+                <select asp-for="ProductTypeId" class="form-control">
+                    @foreach (var productType in Model.ProductTypes)
+                    {
+                        <option value="@productType.Id">@productType.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="ProductTypeId" class="small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" class="form-control">
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId" class="small text-danger"></span>
+            </div>
+
+            <input class="btn btn-primary mt-3" type="submit" value="Save" />
+        </form>
+    </div>
+</div>
