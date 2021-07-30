@@ -10,6 +10,7 @@
     public class ProductService : IProductService
     {
         private readonly OnlineShopDbContext data;
+        private object mapper;
 
         public ProductService(OnlineShopDbContext data) => this.data = data;
 
@@ -105,12 +106,20 @@
                .Any(p => p.Id == categoryId);
 
         public IEnumerable<string> AllProductNames()
-        => this.data
+            => this.data
                 .Products
                 .Select(p => p.Name)
                 .Distinct()
                 .OrderBy(p => p)
                 .ToList();
+
+        //public IEnumerable<NewestProductsServiceModel> Newest()
+        //    => this.data
+        //        .Products
+        //        .OrderByDescending(c => c.Id)
+        //        .ProjectTo<NewestProductsServiceModel>(this.mapper)
+        //        .Take(5)
+        //        .ToList();
     }
 
 }

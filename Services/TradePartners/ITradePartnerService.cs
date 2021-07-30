@@ -1,7 +1,7 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Services.TradePartners
 {
 
-    interface ITradePartnerService
+    public interface ITradePartnerService
     {
         public bool IsTradePartner(string userId);
 

@@ -2,6 +2,8 @@
 {
     using ASP.NET_Core_Project_Online_Shop.Data;
     using ASP.NET_Core_Project_Online_Shop.Models;
+    using ASP.NET_Core_Project_Online_Shop.Models.Home;
+    using ASP.NET_Core_Project_Online_Shop.Services.Products;
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
     using System.Linq;
@@ -9,24 +11,21 @@
     public class HomeController : Controller
     {
 
-        private readonly OnlineShopDbContext data;
+        private readonly IProductService products;
 
-        public HomeController(OnlineShopDbContext data) => this.data = data;
+        public HomeController(IProductService products) => this.products = products;
 
         public IActionResult Index()
         {
-            //if (!this.data.Products.Any())
-            //{
-            //    return View();
-            //}
-
-            //var products = this.data
-            //    .Products
-            //    .OrderByDescending(c => c.Id)
-            //    .Take(5)
+            //var latestProducts = this.products
+            //    .Newest()
             //    .ToList();
 
-            //return View(products);
+
+            //return View(new IndexViewModel
+            //{
+            //    Products = latestProducts
+            //});
 
             return View();
         }

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -10,13 +12,30 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="C:\Users\User\Desktop\D\VisualStudioProjectsNew\ASP.Net Core\ASP.NET-Core-Project-Online-Shop\wwwroot\Banners\banner2-100x100.jpg">
+            <img class="d-block w-100" src="~/Banners/biodroga1.jpg">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="C:\Users\User\Desktop\D\VisualStudioProjectsNew\ASP.Net Core\ASP.NET-Core-Project-Online-Shop\wwwroot\Banners\BiodrogaLotusScience - 600x323-100x100.jpg">
+            <img class="d-block w-100" src="~/Banners/banner1.jpg" />
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="C:\Users\User\Desktop\D\VisualStudioProjectsNew\ASP.Net Core\ASP.NET-Core-Project-Online-Shop\wwwroot\Banners\BiodrogaMen.jpg">
+            <img class="d-block w-100" src="~/Banners/banner2.jpg" />
         </div>
     </div>
 </div>
+
+<div class="mb-5"></div>
+
+@*<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        @for (int i = 0; i < Model.Products.Count; i++)
+        {
+            var product = Model.Products[i];
+            <div class="carousel-item @(i == 0 ? "active" : string.Empty)">
+                <img class="d-block w-100" src="@product.ImageUrl" alt="@product.Name @product.Series">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5><a class="btn btn-primary" asp-controller="Cars" asp-action="Details" asp-route-id="@product.Id">@product.Price  @product.Name @product.Series</a></h5>
+                </div>
+            </div>
+        }
+    </div>
+</div>*@
