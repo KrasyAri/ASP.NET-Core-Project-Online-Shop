@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\NewFolder\" />
+    <Folder Include="Models\Home\" />
   </ItemGroup>
 
 </Project>

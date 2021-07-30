@@ -1,15 +1,12 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Controllers
 {
+    using System.Linq;
     using ASP.NET_Core_Project_Online_Shop.Data;
     using ASP.NET_Core_Project_Online_Shop.Infrastructures;
     using ASP.NET_Core_Project_Online_Shop.Models.Products;
-    using ASP.NET_Core_Project_Online_Shop.Services;
+    using ASP.NET_Core_Project_Online_Shop.Services.Products;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Security.Claims;
-
     using static Areas.Admin.AdminConstants;
 
     public class ProductsController : Controller
@@ -23,11 +20,24 @@
             this.products = products;
         }
 
-        public IActionResult All()
+        public IActionResult All([FromQuery] AllProductsQueryModel query)
         {
-            return BadRequest();
+            var queryResult = this.products.All(
+                query.Name,
+                query.SearchTerm,
+                query.Sorting,
+                query.CurrentPage,
+                AllProductsQueryModel.ProductsPerPage);
+
+            var productName = this.products.AllProductNames();
+
+            query.ProductNames = productName;
+            query.TotalProducts = queryResult.TotalProducts;
+            query.Products = queryResult.Products;
+
+            return View(query);
         }
-       
+
         [Authorize(Roles = AdministratorRoleName)]
         public IActionResult Add()
         {

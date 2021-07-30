@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Project_Online_Shop.Services.Models
+﻿namespace ASP.NET_Core_Project_Online_Shop.Services.Products.Models
 {
     public class ProductTypeServiceModel
     {

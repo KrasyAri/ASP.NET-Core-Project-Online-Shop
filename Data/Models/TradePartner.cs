@@ -6,7 +6,7 @@
 
     public class TradePartner
     {
-        public string Id { get; init; }
+        public int Id { get; init; }
 
         [Required]
         [MaxLength(DefaultMaxLength)]

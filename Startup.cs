@@ -10,7 +10,7 @@ namespace ASP.NET_Core_Project_Online_Shop
     using Microsoft.Extensions.Hosting;
     using ASP.NET_Core_Project_Online_Shop.Data;
     using ASP.NET_Core_Project_Online_Shop.Infrastructures;
-    using ASP.NET_Core_Project_Online_Shop.Services;
+    using ASP.NET_Core_Project_Online_Shop.Services.Products;
 
     public class Startup
     {
