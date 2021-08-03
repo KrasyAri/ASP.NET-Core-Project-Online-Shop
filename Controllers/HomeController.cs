@@ -18,7 +18,7 @@
         public IActionResult Index()
         {
             //var latestProducts = this.products
-            //    .Newest()
+            //    .NewestProducts()
             //    .ToList();
 
 
@@ -28,6 +28,7 @@
             //});
 
             return View();
+
         }
 
         public IActionResult Privacy()

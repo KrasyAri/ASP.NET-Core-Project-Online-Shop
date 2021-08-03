@@ -28,7 +28,7 @@
             int productTypeId,
             int categoryId);
        
-        //IEnumerable<NewestProductsServiceModel> Newest();
+        //IEnumerable<NewestProductsServiceModel> NewestProducts();
 
         IEnumerable<ProductCategoryServiceModel> AllCategories();
 

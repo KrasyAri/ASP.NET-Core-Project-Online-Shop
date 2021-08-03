@@ -9,15 +9,6 @@
         public int Id { get; init; }
 
         [Required]
-        [MaxLength(DefaultMaxLength)]
-        public string FirstName { get; set; }
-
-
-        [Required]
-        [MaxLength(DefaultMaxLength)]
-        public string LastName { get; set; }
-
-        [Required]
         [MaxLength(BulstatMaxLenght)]
         public string Bulstat { get; set; }
 
@@ -26,9 +17,10 @@
         public string CompanyName { get; set; }
 
         [Required]
-        public string PhoneNumber { get; set; }
+        public string UserId { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        [MaxLength(PhoneNumberMaxLength)]
+        public string PhoneNumber { get; set; }
     }
 }

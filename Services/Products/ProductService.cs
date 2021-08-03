@@ -10,7 +10,6 @@
     public class ProductService : IProductService
     {
         private readonly OnlineShopDbContext data;
-        private object mapper;
 
         public ProductService(OnlineShopDbContext data) => this.data = data;
 
@@ -117,9 +116,24 @@
         //    => this.data
         //        .Products
         //        .OrderByDescending(c => c.Id)
-        //        .ProjectTo<NewestProductsServiceModel>(this.mapper)
         //        .Take(5)
         //        .ToList();
+
+        //public IEnumerable<NewestProductsServiceModel> NewestProducts()
+        // => this.data
+        //    .Products
+        //    .OrderByDescending(p => p.Id)
+        //    .Select(p => new NewestProductsServiceModel
+        //    {
+        //        Id = p.Id,
+        //        Name = p.Name,
+        //        Series = p.Series.Name,
+        //        ImageUrl = p.ImageUrl,
+        //        Price = p.Price,
+
+        //    })
+        //    .Take(5)
+        //    .ToList();
     }
 
 }

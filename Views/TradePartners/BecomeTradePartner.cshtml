@@ -7,16 +7,7 @@
         <h2 class="heading-margin text-center">@ViewBag.Title</h2>
 
         <form method="post">
-            <div class="form-group">
-                <label asp-for="FirstName"></label>
-                <input asp-for="FirstName" class="form-control">
-                <span asp-validation-for="FirstName" class="small text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName"></label>
-                <input asp-for="LastName" class="form-control">
-                <span asp-validation-for="LastName" class="small text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Bulstat"></label>
                 <input asp-for="Bulstat" class="form-control" placeholder="example: 999999999">
@@ -27,11 +18,13 @@
                 <input asp-for="CompanyName" class="form-control" placeholder="Santolina LTD, SpaZone LTD, etc...">
                 <span asp-validation-for="CompanyName" class="small text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PhoneNumber"></label>
-                <input asp-for="PhoneNumber" class="form-control" placeholder="+359-999-999-999">
+                <input asp-for="PhoneNumber" class="form-control" placeholder="+359 999 999 999, +359 9 999 99 99...">
                 <span asp-validation-for="PhoneNumber" class="small text-danger"></span>
             </div>
+
             <input class="btn btn-primary mt-3" type="submit" value="Save" />
         </form>
     </div>

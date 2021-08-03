@@ -1,6 +1,5 @@
-﻿namespace ASP.NET_Core_Project_Online_Shop.Models.Products
+﻿namespace ASP.NET_Core_Project_Online_Shop.Areas.Admin.Models
 {
-
     using ASP.NET_Core_Project_Online_Shop.Services.Products.Models;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

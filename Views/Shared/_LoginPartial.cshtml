@@ -1,8 +1,9 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using ASP.NET_Core_Project_Online_Shop.Data.Models
+@using Microsoft.AspNetCore.Identity
 @using ASP.NET_Core_Project_Online_Shop.Services.TradePartners
-@using ASP.NET_Core_Project_Online_Shop.Models
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 @inject ITradePartnerService TradePartners 
 
 <ul class="navbar-nav">
@@ -15,15 +16,19 @@
         @if (userIsTradePartner && !userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="TradePartners" asp-action="Mine">All</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="TradePartners" asp-action="All">All Products</a>
             </li>
- }
-        else if (!userIsAdmin)
+        }
+        else if (userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="TradePartners" asp-action="Become">Become Our Trade Partner</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Add">Add Product</a>
             </li>
-}
+
+        }
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="All">All Products</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a>
         </li>

@@ -9,9 +9,9 @@ namespace ASP.NET_Core_Project_Online_Shop
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using ASP.NET_Core_Project_Online_Shop.Data;
-    using ASP.NET_Core_Project_Online_Shop.Infrastructures;
     using ASP.NET_Core_Project_Online_Shop.Services.Products;
     using ASP.NET_Core_Project_Online_Shop.Services.TradePartners;
+    using ASP.NET_Core_Project_Online_Shop.Data.Models;
 
     public class Startup
     {
@@ -32,7 +32,7 @@ namespace ASP.NET_Core_Project_Online_Shop
                 .AddDatabaseDeveloperPageExceptionFilter();
 
             services
-                .AddDefaultIdentity<IdentityUser>(options =>
+                .AddDefaultIdentity<User>(options =>
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
@@ -40,8 +40,10 @@ namespace ASP.NET_Core_Project_Online_Shop
                 options.Password.RequireUppercase = false;
 
             })
-
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<OnlineShopDbContext>();
+
+            services.AddAutoMapper(typeof(Startup));
 
             services
                 .AddControllersWithViews(options =>
@@ -73,7 +75,10 @@ namespace ASP.NET_Core_Project_Online_Shop
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultAreaRoute();
+                endpoints.MapControllerRoute(
+                     name: "Areas",
+                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });

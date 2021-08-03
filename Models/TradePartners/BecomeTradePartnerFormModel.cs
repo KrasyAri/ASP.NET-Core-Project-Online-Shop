@@ -6,13 +6,13 @@
 
     public class BecomeTradePartnerFormModel
     {
-        [Required]
-        [StringLength(DefaultMaxLength, MinimumLength = TradePartnerNameMinLength)]
-        public string FirstName { get; set; }
+        //[Required]
+        //[StringLength(DefaultMaxLength, MinimumLength = TradePartnerNameMinLength)]
+        //public string FirstName { get; set; }
 
-        [Required]
-        [MaxLength(DefaultMaxLength)]
-        public string LastName { get; set; }
+        //[Required]
+        //[MaxLength(DefaultMaxLength)]
+        //public string LastName { get; set; }
 
         [Required]
         [StringLength(BulstatMaxLenght, MinimumLength = BulstatMinLenght)]

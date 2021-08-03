@@ -6,7 +6,7 @@
     using Microsoft.EntityFrameworkCore;
   
 
-    public class OnlineShopDbContext : IdentityDbContext
+    public class OnlineShopDbContext : IdentityDbContext<User>
     {
         public OnlineShopDbContext(DbContextOptions<OnlineShopDbContext> options)
             : base(options)
@@ -27,30 +27,30 @@
         {
             builder
                 .Entity<Product>()
-                .HasOne(c => c.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey(c => c.CategoryId)
+                .HasOne(p => p.Category)
+                .WithMany(p => p.Products)
+                .HasForeignKey(p => p.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .Entity<Product>()
-                .HasOne(c => c.ProductType)
-                .WithMany(d => d.Products)
-                .HasForeignKey(c => c.ProductTypeId)
+                .HasOne(p => p.ProductType)
+                .WithMany(p => p.Products)
+                .HasForeignKey(p => p.ProductTypeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
                .Entity<Product>()
-               .HasOne(c => c.Series)
-               .WithMany(d => d.Products)
-               .HasForeignKey(c => c.SeriesId)
+               .HasOne(p => p.Series)
+               .WithMany(p => p.Products)
+               .HasForeignKey(p => p.SeriesId)
                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .Entity<TradePartner>()
-                .HasOne<IdentityUser>()
+                .HasOne<User>()
                 .WithOne()
-                .HasForeignKey<TradePartner>(d => d.UserId)
+                .HasForeignKey<TradePartner>(tp => tp.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
