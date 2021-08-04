@@ -24,17 +24,24 @@
 
 <div class="mb-5"></div>
 
-@*<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-        @for (int i = 0; i < Model.Products.Count; i++)
+        @if (!Model.Products.Any())
         {
-            var product = Model.Products[i];
-            <div class="carousel-item @(i == 0 ? "active" : string.Empty)">
-                <img class="d-block w-100" src="@product.ImageUrl" alt="@product.Name @product.Series">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5><a class="btn btn-primary" asp-controller="Cars" asp-action="Details" asp-route-id="@product.Id">@product.Price  @product.Name @product.Series</a></h5>
+            <p class="lead">There are no cars in the system currently available so why don't you just add one?</p>
+        }
+        else
+        {
+            @for (int i = 0; i < Model.Products.Count; i++)
+            {
+                var product = Model.Products[i];
+                <div class="carousel-item @(i == 0 ? "active" : string.Empty)">
+                    <img class="d-block w-100" src="@product.ImageUrl" alt="@product.Name @product.Series">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5><a class="btn btn-danger" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.ProductCode @product.Name @product.Price @product.Series</a></h5>
+                    </div>
                 </div>
-            </div>
+            }
         }
     </div>
-</div>*@
+</div>

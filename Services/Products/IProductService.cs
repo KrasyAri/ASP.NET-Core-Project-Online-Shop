@@ -15,6 +15,7 @@
             int currentPage,
             int productsPerPage);
 
+       
         int Create(
             int productCode,
             string name,
@@ -27,13 +28,24 @@
             int seriesId,
             int productTypeId,
             int categoryId);
-       
-        //IEnumerable<NewestProductsServiceModel> NewestProducts();
+
+        IEnumerable<NewestProductsServiceModel> NewestProducts();
+
+        public ProductsDetailsServiceModel Details(int id);
 
         IEnumerable<ProductCategoryServiceModel> AllCategories();
 
+        IEnumerable<ProductSeriesServiceModel> AllSeries();
+
+        IEnumerable<ProductTypeServiceModel> AllProductTypes();
+
         IEnumerable<string> AllProductNames();
 
+        bool SeriesExist(int seriesId);
+
+        bool ProdyctTypeExist(int productTypeId);
+
         bool CategoryExists(int categoryId);
+
     }
 }

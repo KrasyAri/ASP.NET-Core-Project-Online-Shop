@@ -9,6 +9,8 @@
     {
         public int Id { get; init; }
 
+        public int ProductCode { get; set; }
+
         public string Name { get; init; }
 
         public string Series { get; init; }

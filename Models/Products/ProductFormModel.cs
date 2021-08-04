@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Project_Online_Shop.Areas.Admin.Models
+﻿namespace ASP.NET_Core_Project_Online_Shop.Models.Products
 {
     using ASP.NET_Core_Project_Online_Shop.Services.Products.Models;
     using System.Collections.Generic;
@@ -49,13 +49,13 @@
         [Display(Name = "Series")]
         public int SeriesId { get; init; }
 
-        public IEnumerable<ProductSeriesServiceModel> Series { get; init; }
+        public IEnumerable<ProductSeriesServiceModel> Series { get; set; }
 
 
         [Display(Name = "Product Type")]
         public int ProductTypeId { get; init; }
 
-        public IEnumerable<ProductTypeServiceModel> ProductTypes { get; init; }
+        public IEnumerable<ProductTypeServiceModel> ProductTypes { get; set; }
 
 
         [Display(Name = "Category")]

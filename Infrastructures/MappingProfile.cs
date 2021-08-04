@@ -1,16 +1,14 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Infrastructures
 {
+    using ASP.NET_Core_Project_Online_Shop.Data.Models;
+    using ASP.NET_Core_Project_Online_Shop.Services.Products.Models;
     using AutoMapper;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-
     public class MappingProfile : Profile
     {
         public MappingProfile()
         {
-
+            this.CreateMap<Product, NewestProductsServiceModel>();
+            this.CreateMap<ProductsDetailsServiceModel, ProductServiceModel>();
         }
     }
 }

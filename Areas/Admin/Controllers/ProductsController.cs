@@ -1,23 +1,20 @@
-﻿namespace ASP.NET_Core_Project_Online_Shop.Areas.Admin.Comtrollers
+﻿namespace ASP.NET_Core_Project_Online_Shop.Areas.Admin.Controllers
 {
-    using ASP.NET_Core_Project_Online_Shop.Areas.Admin.Models;
-    using ASP.NET_Core_Project_Online_Shop.Infrastructures;
     using ASP.NET_Core_Project_Online_Shop.Models.Products;
     using ASP.NET_Core_Project_Online_Shop.Services.Products;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     using static AdminConstants;
-    public class ProductsContoller : AdminController
+    public class ProductsController : AdminController
     {
         private readonly IProductService products;
+        public ProductsController(IProductService products)
+            => this.products = products;
 
-        public ProductsContoller(IProductService products) => this.products = products;
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
+
 
         public IActionResult All([FromQuery] AllProductsQueryModel query)
         {

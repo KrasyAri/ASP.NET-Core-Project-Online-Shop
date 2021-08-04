@@ -8,7 +8,7 @@
         <img class="card-img-top" src="@product.ImageUrl" alt="@product.Name @product.Series - @product.Price (@product.CategoryName)">
         <div class="card-body text-center">
             <h5 class="card-title text-center">@product.Price  @product.Name @product.Series (@product.CategoryName)</h5>
-            <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="btn btn-primary">View</a>
+            <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="btn btn-danger">View</a>
             @if (User.IsAdmin())
             {
 <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning">Edit</a>

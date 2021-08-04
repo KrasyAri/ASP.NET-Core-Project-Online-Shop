@@ -77,8 +77,9 @@ namespace ASP.NET_Core_Project_Online_Shop
             {
                 endpoints.MapControllerRoute(
                      name: "Areas",
-                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                     pattern: "{area:exists}/{controller=Products}/{action=Index}/{id?}");
 
+                //endpoints.MapDefaultAreaRoute();
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });

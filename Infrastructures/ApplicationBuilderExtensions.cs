@@ -11,10 +11,10 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using static ASP.NET_Core_Project_Online_Shop.Areas.Admin.AdminConstants;
+
     public static class ApplicationBuilderExtensions
     {
-        public static string AdministratorRoleName { get; private set; }
-
         public static IApplicationBuilder PrepareDatabase(
             this IApplicationBuilder app)
         {
@@ -120,13 +120,16 @@
 
                     await roleManager.CreateAsync(role);
 
-                    const string adminEmail = "admin@gmail.com";
-                    const string adminPassword = "lkjpoi009";
+                    const string adminEmail = "admin@biodroga.com";
+                    const string adminPassword = "lkjpoi0009";
 
                     var user = new User
                     {
                         Email = adminEmail,
-                        UserName = adminEmail
+                        UserName = adminEmail,
+                        FirstName = "Admin",
+                        LastName = "Arizanova"
+                        
                     };
 
                     await userManager.CreateAsync(user, adminPassword);

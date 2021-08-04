@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Project_Online_Shop.Areas.Admin.Comtrollers
+﻿namespace ASP.NET_Core_Project_Online_Shop.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

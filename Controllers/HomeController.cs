@@ -17,17 +17,15 @@
 
         public IActionResult Index()
         {
-            //var latestProducts = this.products
-            //    .NewestProducts()
-            //    .ToList();
+            var newestProducts = this.products
+                .NewestProducts()
+                .ToList();
 
 
-            //return View(new IndexViewModel
-            //{
-            //    Products = latestProducts
-            //});
-
-            return View();
+            return View(new IndexViewModel
+            {
+                Products = newestProducts
+            });
 
         }
 

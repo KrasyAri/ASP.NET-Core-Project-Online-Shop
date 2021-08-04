@@ -4,10 +4,10 @@
     {
         public class Product
         {
-            public const int ProductCodeMinLenght = 5;
+            public const int ProductCodeMinLenght = 4;
             public const int ProductCodeMaxLenght = 7;
             public const int ProductNameMinLenght = 5;
-            public const int ProductNameMaxLenght = 30;
+            public const int ProductNameMaxLenght = 60;
             public const int DescriptionMinLength = 10;
 
             public const int DefaultNameMinLenght = 5;
@@ -25,7 +25,7 @@
             public const int UserIdMaxLength = 40;
             public const int TradePartnerNameMinLength = 3;
             public const int CompanyNameMinLenght = 2;
-            public const int CompanyNameMaxLenght = 30;
+            public const int CompanyNameMaxLenght = 50;
             public const int BulstatMinLenght = 9;
             public const int BulstatMaxLenght = 15;
 
