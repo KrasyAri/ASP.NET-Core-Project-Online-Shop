@@ -17,7 +17,7 @@
 
        
         int Create(
-            int productCode,
+            string productCode,
             string name,
             double tradePartnerPrice,
             double price,

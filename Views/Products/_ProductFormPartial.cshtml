@@ -17,16 +17,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="TradePartnerPrice"></label>
-                <textarea asp-for="TradePartnerPrice" rows="4" class="form-control"></textarea>
+                <input asp-for="TradePartnerPrice" class="form-control">
                 <span asp-validation-for="TradePartnerPrice" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price"></label>
-                <textarea asp-for="Price" rows="4" class="form-control"></textarea>
+                <input asp-for="Price" class="form-control">
                 <span asp-validation-for="Price" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Quantity"></label>
+                <input asp-for="Quantity" class="form-control">
                 <span asp-validation-for="Quantity" class="small text-danger"></span>
             </div>
             <div class="form-group">
@@ -36,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description"></label>
-                <input asp-for="Description" class="form-control" placeholder="Day care for dry skin. Perfect hydratation for summer months/">
+                <textarea asp-for="Description" rows="4" class="form-control" placeholder="Day care for dry skin. Perfect hydratation for summer months/"></textarea>
                 <span asp-validation-for="Description" class="small text-danger"></span>
             </div>
             <div class="form-group">

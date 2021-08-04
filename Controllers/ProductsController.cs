@@ -33,6 +33,7 @@
                 ProductTypes = this.products.AllProductTypes(),
                 Categories = this.products.AllCategories()
             });
+
         }
 
         [HttpPost]

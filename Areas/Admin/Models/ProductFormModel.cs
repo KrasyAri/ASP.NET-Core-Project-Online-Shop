@@ -9,8 +9,8 @@
     public class ProductFormModel
     {
         [Required]
-        [Range(ProductCodeMinLenght, ProductCodeMaxLenght)]
-        public int ProductCode { get; init; }
+        [StringLength(ProductCodeMaxLenght, MinimumLength = ProductCodeMinLenght)]
+        public string ProductCode { get; init; }
 
 
         [Required]

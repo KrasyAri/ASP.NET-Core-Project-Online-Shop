@@ -10,8 +10,8 @@
         public int Id { get; init; }
 
         [Required]
-        [MaxLength(ProductCodeMaxLenght)]
-        public int ProductCode { get; set; }
+        [StringLength(ProductCodeMaxLenght)]
+        public string ProductCode { get; set; }
 
         [Required]
         [StringLength(ProductNameMaxLenght)]
