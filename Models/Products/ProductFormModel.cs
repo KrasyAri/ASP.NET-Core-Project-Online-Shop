@@ -20,11 +20,11 @@
 
 
         [Required]
-        public decimal TradePartnerPrice { get; init; }
+        public string TradePartnerPrice { get; init; }
 
 
         [Required]
-        public decimal Price { get; init; }
+        public string Price { get; init; }
 
         public int Quantity { get; init; }
 

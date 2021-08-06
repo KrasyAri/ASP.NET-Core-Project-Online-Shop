@@ -74,11 +74,10 @@
             return View(query);
         }
 
-        public IActionResult Details(int id, string information)
+        public IActionResult Details(int id)
         {
              var product = this.products.Details(id);
 
-               
                 return View(product);
         }
 

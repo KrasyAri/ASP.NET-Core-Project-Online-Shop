@@ -12,5 +12,9 @@
 
         public string Description { get; set; }
 
+        public string UserId { get; init; }
+
+        public int TradePartnerId { get; init; }
+
     }
 }

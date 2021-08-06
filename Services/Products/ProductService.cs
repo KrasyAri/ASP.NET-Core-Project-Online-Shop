@@ -63,14 +63,15 @@
         }
 
 
-        public int Create(string productCode, string name, decimal tradePartnerPrice, decimal price, int quantity, int netWeight, string description, string imageUrl, Series series, ProductType productType, Category category)
+        public int Create(string productCode, string name, string tradePartnerPrice, string price, int quantity, int netWeight, string description, string imageUrl, Series series, ProductType productType, Category category)
         {
+           
             var productData = new Product
             {
                 ProductCode = productCode,
                 Name = name,
-                TradePartnerPrice = tradePartnerPrice,
-                Price = price,
+                TradePartnerPrice = decimal.Parse(tradePartnerPrice),
+                Price = decimal.Parse(price),
                 Quantity = quantity,
                 NetWeight = netWeight,
                 Description = description,

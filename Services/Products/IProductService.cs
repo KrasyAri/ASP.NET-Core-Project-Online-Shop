@@ -20,8 +20,8 @@
         int Create(
             string productCode,
             string name,
-            decimal tradePartnerPrice,
-            decimal price,
+            string tradePartnerPrice,
+            string price,
             int quantity,
             int netWeight,
             string description,

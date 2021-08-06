@@ -9,6 +9,9 @@
         {
             this.CreateMap<Product, NewestProductsServiceModel>();
             this.CreateMap<ProductsDetailsServiceModel, ProductServiceModel>();
+
+            this.CreateMap<Product, ProductsDetailsServiceModel>()
+                .ForMember(c => c.CategoryName, cfg => cfg.MapFrom(c => c.Category));
         }
     }
 }

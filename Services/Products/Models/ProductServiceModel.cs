@@ -18,6 +18,8 @@
 
         public decimal Price { get; set; }
 
+        public decimal TradePartnerPrice { get; set; }
+
         public Category CategoryName { get; init; }
     }
 }
