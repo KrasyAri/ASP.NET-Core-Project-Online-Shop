@@ -23,9 +23,6 @@
 
             MigrateDatabase(services);
 
-            SeedCategories(services);
-            SeedSeries(services);
-            SeedProductTypes(services);
             SeedAdministrator(services);
 
             return app;
@@ -38,70 +35,6 @@
             data.Database.Migrate();
         }
 
-        private static void SeedCategories(IServiceProvider services)
-        {
-            var data = services.GetRequiredService<OnlineShopDbContext>();
-
-            if (data.Categories.Any())
-            {
-                return;
-            }
-
-            data.Categories.AddRange(new[]
-            {
-                new Category { Name = "Creme" },
-                new Category { Name = "Mask" },
-                new Category { Name = "Eye Care" },
-                new Category { Name = "Peeling" },
-                new Category { Name = "Cleaning Products" },
-                new Category { Name = "Luxury" },
-                new Category { Name = "Others" },
-            });
-
-            data.SaveChanges();
-        }
-
-        private static void SeedProductTypes(IServiceProvider services)
-        {
-            var data = services.GetRequiredService<OnlineShopDbContext>();
-
-            if (data.ProductTypes.Any())
-            {
-                return;
-            }
-
-            data.ProductTypes.AddRange(new[]
-            {
-                new ProductType { Name = "Retail" },
-                new ProductType { Name = "Professional" },
-               
-            });
-
-            data.SaveChanges();
-        }
-
-        private static void SeedSeries(IServiceProvider services)
-        {
-            var data = services.GetRequiredService<OnlineShopDbContext>();
-
-            if (data.Series.Any())
-            {
-                return;
-            }
-
-            data.Series.AddRange(new[]
-            {
-                new Series { Name = "Perfect Age Formula" },
-                new Series { Name = "Anti-Age Cell Formula" },
-                new Series { Name = "Caviar&Radiance" },
-                new Series { Name = "Oxigen Formula" },
-                new Series { Name = "Global Anti-Age Formula" },
-                new Series { Name = "Age Performance Formula" },
-
-            });
-
-            data.SaveChanges();
-        }
 
         private static void SeedAdministrator(IServiceProvider services)
         {

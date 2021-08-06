@@ -1,11 +1,13 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Services.Products
 {
     using ASP.NET_Core_Project_Online_Shop.Data;
+    using ASP.NET_Core_Project_Online_Shop.Data.Enums;
     using ASP.NET_Core_Project_Online_Shop.Data.Models;
     using ASP.NET_Core_Project_Online_Shop.Models;
     using ASP.NET_Core_Project_Online_Shop.Services.Products.Models;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -34,14 +36,14 @@
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
                 productsQuery = productsQuery.Where(p =>
-                    (p.Name + " " + p.Series.Name).ToLower().Contains(searchTerm.ToLower()) ||
+                    (p.Name + " " + p.Series.ToString()).ToLower().Contains(searchTerm.ToLower()) ||
                     p.Description.ToLower().Contains(searchTerm.ToLower()));
             }
 
             productsQuery = sorting switch
             {
                 ProductSorting.Name => productsQuery.OrderBy(p => p.Name),
-                ProductSorting.Series => productsQuery.OrderBy(p => p.Series.Name),
+                ProductSorting.Series => productsQuery.OrderBy(p => p.Series.ToString()),
                 ProductSorting.DateCreated or _ => productsQuery.OrderByDescending(c => c.Id)
             };
 
@@ -61,7 +63,7 @@
         }
 
 
-        public int Create(string productCode, string name, double tradePartnerPrice, double price, int quantity, int netWeight, string description, string imageUrl, int seriesId, int productTypeId, int categoryId)
+        public int Create(string productCode, string name, double tradePartnerPrice, double price, int quantity, int netWeight, string description, string imageUrl, Series series, ProductType productType, Category category)
         {
             var productData = new Product
             {
@@ -73,9 +75,9 @@
                 NetWeight = netWeight,
                 Description = description,
                 ImageUrl = imageUrl,
-                SeriesId = seriesId,
-                ProductTypeId = productTypeId,
-                CategoryId = categoryId
+                Series = series,
+                ProductType = productType,
+                Category = category
             };
 
             this.data.Products.Add(productData);
@@ -99,37 +101,6 @@
                 .ProjectTo<ProductsDetailsServiceModel>(this.mapper)
                 .FirstOrDefault();
 
-
-        public IEnumerable<ProductCategoryServiceModel> AllCategories()
-            => this.data
-                .Categories
-                .Select(c => new ProductCategoryServiceModel
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                })
-                .ToList();
-
-        public IEnumerable<ProductSeriesServiceModel> AllSeries()
-            => this.data
-                .Series
-                .Select(s => new ProductSeriesServiceModel
-                {
-                    Id = s.Id,
-                    Name = s.Name
-                })
-                .ToList();
-
-        public IEnumerable<ProductTypeServiceModel> AllProductTypes()
-            => this.data
-            .ProductTypes
-            .Select(pt => new ProductTypeServiceModel
-            {
-                Id = pt.Id,
-                Name = pt.Name
-            })
-            .ToList();
-
         public IEnumerable<string> AllProductNames()
             => this.data
                 .Products
@@ -139,34 +110,18 @@
                 .ToList();
 
         private static IEnumerable<ProductServiceModel> GetProducts(IQueryable<Product> productQuery)
-          => productQuery
-              .Select(p => new ProductServiceModel
-              {
-                  Id = p.Id,
-                  Name = p.Name,
-                  Series = p.Series.Name,
-                  Price = p.Price,
-                  ImageUrl = p.ImageUrl,
-                  CategoryName = p.Category.Name
-              })
-              .ToList();
+            => productQuery
+                .Select(p => new ProductServiceModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Series = p.Series,
+                    Price = p.Price,
+                    ImageUrl = p.ImageUrl,
+                    CategoryName = p.Category
+                })
+                .ToList();
 
-        public bool SeriesExist(int seriesId)
-            => this.data
-                .Series
-                .Any(s => s.Id == seriesId);
-
-        public bool ProdyctTypeExist(int productTypeId)
-            => this.data
-                .ProductTypes
-                .Any(pt => pt.Id == productTypeId);
-
-        public bool CategoryExists(int categoryId)
-           => this.data
-               .Categories
-               .Any(p => p.Id == categoryId);
-
-      
     }
 
 }

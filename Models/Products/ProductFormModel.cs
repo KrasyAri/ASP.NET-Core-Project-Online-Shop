@@ -1,5 +1,6 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Models.Products
 {
+    using ASP.NET_Core_Project_Online_Shop.Data.Enums;
     using ASP.NET_Core_Project_Online_Shop.Services.Products.Models;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -46,21 +47,13 @@
         public string ImageUrl { get; init; }
 
 
-        [Display(Name = "Series")]
-        public int SeriesId { get; init; }
+        public Series Series { get; init; }
 
-        public IEnumerable<ProductSeriesServiceModel> Series { get; set; }
+        public Category Category { get; init; }
 
 
         [Display(Name = "Product Type")]
-        public int ProductTypeId { get; init; }
+        public ProductType ProductType { get; set; }
 
-        public IEnumerable<ProductTypeServiceModel> ProductTypes { get; set; }
-
-
-        [Display(Name = "Category")]
-        public int CategoryId { get; init; }
-
-        public IEnumerable<ProductCategoryServiceModel> Categories { get; set; }
     }
 }

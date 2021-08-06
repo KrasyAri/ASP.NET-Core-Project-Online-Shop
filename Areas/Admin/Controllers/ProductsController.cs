@@ -41,11 +41,7 @@
             //{
             //    return Unauthorized();
             //}
-
-            return View(new ProductFormModel
-            {
-                Categories = this.products.AllCategories()
-            });
+            return View();
         }
 
         [HttpPost]
@@ -53,15 +49,9 @@
         public IActionResult Add(ProductFormModel product)
         {
 
-            if (!this.products.CategoryExists(product.CategoryId))
-            {
-                this.ModelState.AddModelError(nameof(product.CategoryId), "Category does not exist.");
-            }
-
             if (!ModelState.IsValid)
             {
-                product.Categories = this.products.AllCategories();
-
+                                
                 return View(product);
             }
 
@@ -74,9 +64,9 @@
                 product.NetWeight,
                 product.Description,
                 product.ImageUrl,
-                product.SeriesId,
-                product.ProductTypeId,
-                product.CategoryId);
+                product.Series,
+                product.ProductType,
+                product.Category);
 
             return RedirectToAction(nameof(All));
         }

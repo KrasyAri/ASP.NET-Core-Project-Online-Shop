@@ -1,6 +1,7 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Controllers
 {
     using ASP.NET_Core_Project_Online_Shop.Data;
+    using ASP.NET_Core_Project_Online_Shop.Data.Enums;
     using ASP.NET_Core_Project_Online_Shop.Infrastructures;
     using ASP.NET_Core_Project_Online_Shop.Models.Products;
     using ASP.NET_Core_Project_Online_Shop.Services.Products;
@@ -26,14 +27,7 @@
             //{
             //    return Unauthorized();
             //}
-
-            return View(new ProductFormModel
-            {
-                Series = this.products.AllSeries(),
-                ProductTypes = this.products.AllProductTypes(),
-                Categories = this.products.AllCategories()
-            });
-
+            return View();
         }
 
         [HttpPost]
@@ -41,27 +35,8 @@
         public IActionResult Add(ProductFormModel product)
         {
 
-            if (!this.products.CategoryExists(product.CategoryId))
-            {
-                this.ModelState.AddModelError(nameof(product.CategoryId), "Category does not exist.");
-            }
-
-            if (!this.products.SeriesExist(product.SeriesId))
-            {
-                this.ModelState.AddModelError(nameof(product.SeriesId), "Series does not exist.");
-            }
-
-            if (!this.products.ProdyctTypeExist(product.ProductTypeId))
-            {
-                this.ModelState.AddModelError(nameof(product.ProductTypeId), "Product Type does not exist.");
-            }
-
             if (!ModelState.IsValid)
             {
-                product.Series = this.products.AllSeries();
-                product.ProductTypes = this.products.AllProductTypes();
-                product.Categories = this.products.AllCategories();
-
                 return View(product);
             }
 
@@ -74,9 +49,9 @@
                 product.NetWeight,
                 product.Description,
                 product.ImageUrl,
-                product.SeriesId,
-                product.ProductTypeId,
-                product.CategoryId);
+                product.Series,
+                product.ProductType,
+                product.Category);
 
             return RedirectToAction(nameof(All));
         }

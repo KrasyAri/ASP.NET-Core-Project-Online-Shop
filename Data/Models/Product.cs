@@ -1,6 +1,6 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Data.Models
 {
-    using System.Collections.Generic;
+    using ASP.NET_Core_Project_Online_Shop.Data.Enums;
     using System.ComponentModel.DataAnnotations;
  
     using static DataConstants.Product;
@@ -33,15 +33,9 @@
         [Required]
         public string ImageUrl { get; set; }
 
-        public int SeriesId { get; set; }
-
         public Series Series { get; set; }
 
-        public int ProductTypeId { get; set; }
-
         public ProductType ProductType { get; set; }
-
-        public int CategoryId { get; set; }
 
         public Category Category { get; set; }
 

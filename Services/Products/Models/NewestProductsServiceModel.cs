@@ -1,5 +1,6 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Services.Products.Models
 {
+    using ASP.NET_Core_Project_Online_Shop.Data.Enums;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -13,7 +14,7 @@
 
         public string Name { get; init; }
 
-        public string Series { get; init; }
+        public Series Series { get; init; }
 
         public string ImageUrl { get; init; }
 

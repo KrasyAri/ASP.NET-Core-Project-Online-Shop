@@ -28,7 +28,7 @@
     <div class="carousel-inner">
         @if (!Model.Products.Any())
         {
-            <p class="lead">There are no cars in the system currently available so why don't you just add one?</p>
+            <p class="lead">There are no Products in the system currently available!</p>
         }
         else
         {
@@ -36,9 +36,9 @@
             {
                 var product = Model.Products[i];
                 <div class="carousel-item @(i == 0 ? "active" : string.Empty)">
-                    <img class="d-block w-100" src="@product.ImageUrl" alt="@product.Name @product.Series">
+                    <img class="d-block w-100" src="@product.ImageUrl" alt="@product.Name @product.Series.ToString()">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5><a class="btn btn-danger" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.ProductCode @product.Name @product.Price @product.Series</a></h5>
+                        <h5><a class="btn btn-danger" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.ProductCode @product.Name @product.Price @product.Series.ToString()</a></h5>
                     </div>
                 </div>
             }
