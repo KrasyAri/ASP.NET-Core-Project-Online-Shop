@@ -63,7 +63,7 @@
         }
 
 
-        public int Create(string productCode, string name, double tradePartnerPrice, double price, int quantity, int netWeight, string description, string imageUrl, Series series, ProductType productType, Category category)
+        public int Create(string productCode, string name, decimal tradePartnerPrice, decimal price, int quantity, int netWeight, string description, string imageUrl, Series series, ProductType productType, Category category)
         {
             var productData = new Product
             {

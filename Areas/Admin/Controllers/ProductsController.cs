@@ -34,42 +34,5 @@
             return View(query);
         }
 
-
-        public IActionResult Add()
-        {
-            //if (!this.User.IsAdmin())
-            //{
-            //    return Unauthorized();
-            //}
-            return View();
-        }
-
-        [HttpPost]
-        [Authorize(Roles = AdministratorRoleName)]
-        public IActionResult Add(ProductFormModel product)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                                
-                return View(product);
-            }
-
-            this.products.Create(
-                product.ProductCode,
-                product.Name,
-                product.TradePartnerPrice,
-                product.Price,
-                product.Quantity,
-                product.NetWeight,
-                product.Description,
-                product.ImageUrl,
-                product.Series,
-                product.ProductType,
-                product.Category);
-
-            return RedirectToAction(nameof(All));
-        }
-
     }
 }

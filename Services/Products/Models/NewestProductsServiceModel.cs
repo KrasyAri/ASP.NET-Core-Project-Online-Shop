@@ -18,6 +18,6 @@
 
         public string ImageUrl { get; init; }
 
-        public double Price { get; init; }
+        public decimal Price { get; init; }
     }
 }
