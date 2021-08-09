@@ -24,7 +24,12 @@
             this.mapper = mapper;
         }
 
-        public ProductQueryServiceModel All(string name, string searchTerm, ProductSorting sorting, int currentPage, int productsPerPage)
+        public ProductQueryServiceModel All(
+            string name = null, 
+            string searchTerm = null, 
+            ProductSorting sorting = ProductSorting.DateCreated, 
+            int currentPage = 1, 
+            int productsPerPage = int.MaxValue)
         {
             var productsQuery = this.data.Products.AsQueryable();
 
@@ -36,7 +41,7 @@
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
                 productsQuery = productsQuery.Where(p =>
-                    (p.Name + " " + p.Series.ToString()).ToLower().Contains(searchTerm.ToLower()) ||
+                    (p.Name + " " + p.Series).ToLower().Contains(searchTerm.ToLower()) ||
                     p.Description.ToLower().Contains(searchTerm.ToLower()));
             }
 
@@ -87,6 +92,38 @@
             return productData.Id;
         }
 
+        public bool Edit(int id, string productCode, string name, string tradePartnerPrice, string price, int quantity, int netWeight, string description, string imageUrl, Series series, ProductType productType, Category category)
+        {
+            var productData = this.data.Products.Find(id);
+
+            productData.ProductCode = productCode;
+            productData.Name = name;
+            productData.TradePartnerPrice = decimal.Parse(tradePartnerPrice);
+            productData.Price = decimal.Parse(price);
+            productData.Quantity = quantity;
+            productData.NetWeight = netWeight;
+            productData.Description = description;
+            productData.ImageUrl = imageUrl;
+            productData.Series = series;
+            productData.ProductType = productType;
+            productData.Category = category;
+
+            this.data.SaveChanges();
+
+            return true;
+                    
+        }
+
+        public bool Delete(int id)
+        {
+            var productForDelete = this.data.Products.Find(id);
+
+            this.data.Products.Remove(productForDelete);
+            this.data.SaveChanges();
+
+            return true;
+        }
+
         public IEnumerable<NewestProductsServiceModel> NewestProducts()
             => this.data
                 .Products
@@ -123,6 +160,7 @@
                 })
                 .ToList();
 
+       
     }
 
 }

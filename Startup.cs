@@ -12,6 +12,7 @@ namespace ASP.NET_Core_Project_Online_Shop
     using ASP.NET_Core_Project_Online_Shop.Services.Products;
     using ASP.NET_Core_Project_Online_Shop.Services.TradePartners;
     using ASP.NET_Core_Project_Online_Shop.Data.Models;
+    using ASP.NET_Core_Project_Online_Shop.Infrastructures;
 
     public class Startup
     {
@@ -75,11 +76,7 @@ namespace ASP.NET_Core_Project_Online_Shop
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                     name: "Areas",
-                     pattern: "{area:exists}/{controller=Products}/{action=Index}/{id?}");
-
-                //endpoints.MapDefaultAreaRoute();
+                endpoints.MapDefaultAreaRoute();
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });

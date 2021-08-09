@@ -30,6 +30,22 @@
             ProductType productType,
             Category category);
 
+        bool Edit(
+            int id,
+            string productCode,
+            string name,
+            string tradePartnerPrice,
+            string price,
+            int quantity,
+            int netWeight,
+            string description,
+            string imageUrl,
+            Series series,
+            ProductType productType,
+            Category category);
+
+        bool Delete(int id);
+        
         IEnumerable<NewestProductsServiceModel> NewestProducts();
 
         public ProductsDetailsServiceModel Details(int id);
