@@ -1,11 +1,17 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Data.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static DataConstants.ShippingDetails;
 
     public class ShippingDetails
     {
+        [Required]
+        public string UserId { get; set; }
+
+        public User User { get; set; }
+
 
         [Required]
         [MaxLength(CountryMaxLenght)]
@@ -27,5 +33,7 @@
         public string DeliveryCompanyOffice { get; set; }
 
         public string AdditionalInfo { get; set; }
+
+        public IEnumerable<Order> Orders { get; set; }
     }
 }
