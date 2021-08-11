@@ -1,7 +1,87 @@
 ﻿@model ProductsDetailsServiceModel
 
+@using ASP.NET_Core_Project_Online_Shop.Data.Models
+@using Microsoft.AspNetCore.Identity
 
-<div class="col-md-6 offset-3">
-    <h2>@Model.ImageUrl @Model.ProductCode @Model.Name @Model.Description @Model.Price</h2>
-</div>
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@inject ITradePartnerService TradePartners
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var userId = User.Id();
+    var userIsTradePartner = TradePartners.IsTradePartner(userId);
+
+    if (userIsTradePartner)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Product Code</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Series</th>
+                    <th scope="col">Trade Partner Price</th>
+                    <th scope="col">Client Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="col"><img width="50" height="50" src="@Model.ImageUrl"/></th>
+                    <th scope="col">@Model.ProductCode</th>
+                    <th scope="col">@Model.Name</th>
+                    <th scope="col">@Model.Series</th>
+                    <th scope="col">@Model.Price</th>
+                    <th scope="col">@Model.TradePartnerPrice</th>
+                </tr>
+            </tbody>
+        </table>  
+    }
+    else 
+    { 
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Product Code</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Series</th>
+                    <th scope="col">Client Price</th>
+                </tr>
+            <tbody>
+                <tr>
+                    <th scope="col"><img width="50" height="50" src="@Model.ImageUrl"/></th>
+                    <th scope="col">@Model.ProductCode</th>
+                    <th scope="col">@Model.Name</th>
+                    <th scope="col">@Model.Series</th>
+                    <th scope="col">@Model.Price</th>
+                </tr>
+            </tbody>
+        </table> 
+    }
+}
+
+else
+{
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Product Code</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Series</th>
+            <th scope="col">Client Price</th>
+        </tr>
+    <tbody>
+        <tr>
+            <th scope="col"><img width="50" height="50" src="@Model.ImageUrl" /></th>
+            <th scope="col">@Model.ProductCode</th>
+            <th scope="col">@Model.Name</th>
+            <th scope="col">@Model.Series</th>
+            <th scope="col">@Model.Price</th>
+        </tr>
+    </tbody>
+</table>
+}
+
 

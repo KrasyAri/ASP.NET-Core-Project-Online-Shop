@@ -28,7 +28,6 @@
             var productName = this.products.AllProductNames();
 
             query.ProductNames = productName;
-            query.TotalProducts = queryResult.TotalProducts;
             query.Products = queryResult.Products;
 
             return View(query);

@@ -60,7 +60,6 @@
 
             return new ProductQueryServiceModel
             {
-                TotalProducts = totalProducts,
                 CurrentPage = currentPage,
                 ProductsPerPage = productsPerPage,
                 Products = products

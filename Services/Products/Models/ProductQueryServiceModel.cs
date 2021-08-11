@@ -11,8 +11,6 @@
 
         public int ProductsPerPage { get; init; }
 
-        public int TotalProducts { get; init; }
-
         public IEnumerable<ProductServiceModel> Products { get; init; }
     }
 }
