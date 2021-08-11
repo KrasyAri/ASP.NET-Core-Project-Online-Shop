@@ -60,6 +60,7 @@
 
             return new ProductQueryServiceModel
             {
+                TotalProducts = totalProducts,
                 CurrentPage = currentPage,
                 ProductsPerPage = productsPerPage,
                 Products = products
@@ -94,6 +95,11 @@
         public bool Edit(int id, string productCode, string name, string tradePartnerPrice, string price, int quantity, int netWeight, string description, string imageUrl, Series series, ProductType productType, Category category)
         {
             var productData = this.data.Products.Find(id);
+
+            if (productData == null)
+            {
+                return false;
+            }
 
             productData.ProductCode = productCode;
             productData.Name = name;
@@ -146,17 +152,18 @@
                 .OrderBy(p => p)
                 .ToList();
 
-        private static IEnumerable<ProductServiceModel> GetProducts(IQueryable<Product> productQuery)
+        private IEnumerable<ProductServiceModel> GetProducts(IQueryable<Product> productQuery)
             => productQuery
-                .Select(p => new ProductServiceModel
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Series = p.Series,
-                    Price = p.Price,
-                    ImageUrl = p.ImageUrl,
-                    CategoryName = p.Category
-                })
+            .ProjectTo<ProductServiceModel>(this.mapper)
+                //.Select(p => new ProductServiceModel
+                //{
+                //    Id = p.Id,
+                //    Name = p.Name,
+                //    Series = p.Series,
+                //    Price = p.Price,
+                //    ImageUrl = p.ImageUrl,
+                //    CategoryName = p.Category
+                //})
                 .ToList();
 
        
