@@ -16,18 +16,15 @@ namespace ASP.NET_Core_Project_Online_Shop
 
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) 
+            => this.Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<OnlineShopDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
             services
                 .AddDatabaseDeveloperPageExceptionFilter();
@@ -76,6 +73,9 @@ namespace ASP.NET_Core_Project_Online_Shop
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute(
+                //    "areaRoute",
+                //    "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapDefaultAreaRoute();
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();

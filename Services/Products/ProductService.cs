@@ -154,16 +154,7 @@
 
         private IEnumerable<ProductServiceModel> GetProducts(IQueryable<Product> productQuery)
             => productQuery
-            .ProjectTo<ProductServiceModel>(this.mapper)
-                //.Select(p => new ProductServiceModel
-                //{
-                //    Id = p.Id,
-                //    Name = p.Name,
-                //    Series = p.Series,
-                //    Price = p.Price,
-                //    ImageUrl = p.ImageUrl,
-                //    CategoryName = p.Category
-                //})
+                .ProjectTo<ProductServiceModel>(this.mapper)
                 .ToList();
 
        

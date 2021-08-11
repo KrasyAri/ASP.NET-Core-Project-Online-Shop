@@ -9,7 +9,7 @@
     using System;
     using System.Threading.Tasks;
 
-    using static ASP.NET_Core_Project_Online_Shop.Areas.Admin.AdminConstants;
+    using static ASP.NET_Core_Project_Online_Shop.Areas.Administration.AdminConstants;
 
     public static class ApplicationBuilderExtensions
     {

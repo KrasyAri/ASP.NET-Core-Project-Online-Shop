@@ -3,7 +3,7 @@
 
     using System.Security.Claims;
 
-    using static Areas.Admin.AdminConstants;
+    using static Areas.Administration.AdminConstants;
 
     public static class ClaimsPrincipalExtensions
     {

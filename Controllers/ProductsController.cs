@@ -9,7 +9,7 @@
     using AutoMapper;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using static Areas.Admin.AdminConstants;
+    using static Areas.Administration.AdminConstants;
 
     public class ProductsController : Controller
     {
@@ -127,8 +127,21 @@
         [Authorize]
         public IActionResult Delete(int id)
         {
-            var deleted = this.products.Delete(id);
+            var productForDelete = this.products.Details(id);
 
+            //var deleted = this.products.Delete(id);
+
+            return View(productForDelete);
+        }
+
+        [Authorize]
+        [HttpPost, ActionName("Confirm Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var product = this.products.Details(id);
+
+            var deleted = this.products.Delete(id);
+            
             return RedirectToAction(nameof(All));
         }
     }

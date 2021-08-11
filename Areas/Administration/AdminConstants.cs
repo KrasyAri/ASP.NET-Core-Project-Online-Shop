@@ -1,4 +1,4 @@
-﻿namespace ASP.NET_Core_Project_Online_Shop.Areas.Admin
+﻿namespace ASP.NET_Core_Project_Online_Shop.Areas.Administration
 {
     public class AdminConstants
     {
