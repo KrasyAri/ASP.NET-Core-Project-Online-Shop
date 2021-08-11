@@ -25,8 +25,6 @@
             this.mapper = mapper;
         }
 
-        
-
         public IActionResult All([FromQuery] AllProductsQueryModel query)
         {
             var queryResult = this.products.All(

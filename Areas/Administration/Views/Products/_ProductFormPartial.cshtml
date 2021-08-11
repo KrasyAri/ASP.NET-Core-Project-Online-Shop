@@ -1,0 +1,90 @@
+﻿@model ASP.NET_Core_Project_Online_Shop.Models.Products.ProductFormModel
+
+@using ASP.NET_Core_Project_Online_Shop.Data.Enums
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="ProductCode"></label>
+                <input asp-for="ProductCode" class="form-control" placeholder="43059...">
+                <span asp-validation-for="ProductCode" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Oxigen Formula Day Care, Repair and Cell Night Care, etc...">
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TradePartnerPrice"></label>
+                <input asp-for="TradePartnerPrice" class="form-control">
+                <span asp-validation-for="TradePartnerPrice" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control">
+                <span asp-validation-for="Price" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity"></label>
+                <input asp-for="Quantity" class="form-control">
+                <span asp-validation-for="Quantity" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NetWeight"></label>
+                <input asp-for="NetWeight" class="form-control" placeholder="30 ml, 50 lm, etc...">
+                <span asp-validation-for="NetWeight" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" rows="4" class="form-control" placeholder="Day care for dry skin. Perfect hydratation for summer months/"></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control" placeholder="Your URL here...">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Series"></label>
+                <select asp-for="Series" class="form-control">
+                    @foreach (int productSeries in Enum.GetValues(typeof(Series)))
+                    {
+                        <option value="@productSeries">@Enum.GetName(typeof(Series), productSeries)</option>
+                    }
+                </select>
+                <span asp-validation-for="Series" class="small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProductType"></label>
+                <select asp-for="ProductType" class="form-control">
+                    @foreach (int productType in Enum.GetValues(typeof(ProductType)))
+                    {
+                        <option value="@productType">@Enum.GetName(typeof(ProductType), productType)</option>
+                    }
+                </select>
+                <span asp-validation-for="ProductType" class="small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Category"></label>
+                <select asp-for="Category" class="form-control">
+                    @foreach (var category in Enum.GetValues(typeof(Category)))
+                    {
+                    <option value="@category">@Enum.GetName(typeof(Category), category)</option>
+                    }
+                </select>
+                <span asp-validation-for="Category" class="small text-danger"></span>
+            </div>
+
+
+
+            <input class="btn btn-danger mt-3" type="submit" value="Save" />
+        </form>
+    </div>
+</div>
+

@@ -1,8 +1,6 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Models.Products
 {
     using ASP.NET_Core_Project_Online_Shop.Data.Enums;
-    using ASP.NET_Core_Project_Online_Shop.Services.Products.Models;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static Data.DataConstants.Product;

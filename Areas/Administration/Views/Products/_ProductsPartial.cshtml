@@ -9,11 +9,11 @@
         <div class="card-body text-center">
             <h5 class="card-title text-center">@product.Price BGN  @product.Name @product.Series (@product.CategoryName)</h5>
             <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="btn btn-danger">View</a>
-              @if (User.IsAdmin())
-              {
+              @*@if (User.IsAdmin())
+              {*@
                 <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-danger">Edit</a>
                 <a asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
-              }
+              
         </div>
     </div>
 </div>
