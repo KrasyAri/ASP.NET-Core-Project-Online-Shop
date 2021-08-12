@@ -50,97 +50,97 @@
                 return View(product);
         }
 
-        [Authorize]
-        public IActionResult Add()
-        {
-            //if (!this.User.IsAdmin())
-            //{
-            //    return Unauthorized();
-            //}
-            return View();
-        }
+        //[Authorize]
+        //public IActionResult Add()
+        //{
+        //    if (!this.User.IsAdmin())
+        //    {
+        //        return Unauthorized();
+        //    }
+        //    return View();
+        //}
 
-        [HttpPost]
-        [Authorize]
-        public IActionResult Add(ProductFormModel product)
-        {
+        //[HttpPost]
+        //[Authorize]
+        //public IActionResult Add(ProductFormModel product)
+        //{
 
-            if (!ModelState.IsValid)
-            {
-                return View(product);
-            }
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(product);
+        //    }
 
-            this.products.Create(
-                product.ProductCode,
-                product.Name,
-                product.TradePartnerPrice,
-                product.Price,
-                product.Quantity,
-                product.NetWeight,
-                product.Description,
-                product.ImageUrl,
-                product.Series,
-                product.ProductType,
-                product.Category);
+        //    this.products.Create(
+        //        product.ProductCode,
+        //        product.Name,
+        //        product.TradePartnerPrice,
+        //        product.Price,
+        //        product.Quantity,
+        //        product.NetWeight,
+        //        product.Description,
+        //        product.ImageUrl,
+        //        product.Series,
+        //        product.ProductType,
+        //        product.Category);
 
-            return RedirectToAction(nameof(All));
-        }
+        //    return RedirectToAction(nameof(All));
+        //}
 
-        [Authorize]
-        public IActionResult Edit(int id)
-        {
-            var product = this.products.Details(id);
-            var productForm = this.mapper.Map<ProductFormModel>(product);
+        //[Authorize]
+        //public IActionResult Edit(int id)
+        //{
+        //    var product = this.products.Details(id);
+        //    var productForm = this.mapper.Map<ProductFormModel>(product);
 
             
-            return View(productForm);
-        }
+        //    return View(productForm);
+        //}
 
-        [HttpPost]
-        [Authorize]
-        public IActionResult Edit(int id, ProductFormModel product)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(product);
-            }
+        //[HttpPost]
+        //[Authorize]
+        //public IActionResult Edit(int id, ProductFormModel product)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(product);
+        //    }
 
-            var edited = this.products.Edit(
-                id,
-                product.ProductCode,
-                product.Name,
-                product.TradePartnerPrice,
-                product.Price,
-                product.Quantity,
-                product.NetWeight,
-                product.Description,
-                product.ImageUrl,
-                product.Series,
-                product.ProductType,
-                product.Category);
+        //    var edited = this.products.Edit(
+        //        id,
+        //        product.ProductCode,
+        //        product.Name,
+        //        product.TradePartnerPrice,
+        //        product.Price,
+        //        product.Quantity,
+        //        product.NetWeight,
+        //        product.Description,
+        //        product.ImageUrl,
+        //        product.Series,
+        //        product.ProductType,
+        //        product.Category);
 
-            return RedirectToAction(nameof(All));
-        }
+        //    return RedirectToAction(nameof(All));
+        //}
 
-        [Authorize]
-        public IActionResult Delete(int id)
-        {
-            var productForDelete = this.products.Details(id);
+        //[Authorize]
+        //public IActionResult Delete(int id)
+        //{
+        //    var productForDelete = this.products.Details(id);
 
-            //var deleted = this.products.Delete(id);
+        //    //var deleted = this.products.Delete(id);
 
-            return View(productForDelete);
-        }
+        //    return View(productForDelete);
+        //}
 
-        [Authorize]
-        [HttpPost, ActionName("Confirm Delete")]
-        public IActionResult DeleteConfirmed(int id)
-        {
-            var product = this.products.Details(id);
+        //[Authorize]
+        //[HttpPost, ActionName("Confirm Delete")]
+        //public IActionResult DeleteConfirmed(int id)
+        //{
+        //    var product = this.products.Details(id);
 
-            var deleted = this.products.Delete(id);
+        //    var deleted = this.products.Delete(id);
             
-            return RedirectToAction(nameof(All));
-        }
+        //    return RedirectToAction(nameof(All));
+        //}
     }
 }

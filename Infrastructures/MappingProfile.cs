@@ -2,6 +2,7 @@
 {
     using ASP.NET_Core_Project_Online_Shop.Data.Models;
     using ASP.NET_Core_Project_Online_Shop.Models.Products;
+    using ASP.NET_Core_Project_Online_Shop.Services.Cart.Models;
     using ASP.NET_Core_Project_Online_Shop.Services.Products.Models;
     using AutoMapper;
     public class MappingProfile : Profile
@@ -14,6 +15,8 @@
             this.CreateMap<Product, ProductServiceModel>();
 
             this.CreateMap<Product, ProductsDetailsServiceModel>();
+
+            this.CreateMap<CartItem, CartViewServiceMode>();
 
         }
     }

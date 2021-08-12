@@ -8,6 +8,8 @@
     using Microsoft.AspNetCore.Mvc;
     using AutoMapper;
 
+    using static Data.WebConstants;
+
     [Area("Administration")]
     public class ProductsController : Controller
     {
@@ -52,10 +54,10 @@
         [Authorize]
         public IActionResult Add()
         {
-            if (!this.User.IsAdmin())
-            {
-                return Unauthorized();
-            }
+            //if (!this.User.IsAdmin())
+            //{
+            //    return Unauthorized();
+            //}
 
             return View();
         }
@@ -82,6 +84,8 @@
                 product.Series,
                 product.ProductType,
                 product.Category);
+
+            this.TempData[Messagekey] = "Successfully added product";
 
             return RedirectToAction(nameof(All));
         }
@@ -119,6 +123,8 @@
                 product.ProductType,
                 product.Category);
 
+            this.TempData[Messagekey] = "Successfully edited product";
+
             return RedirectToAction(nameof(All));
         }
 
@@ -139,6 +145,8 @@
             var product = this.products.Details(id);
 
             var deleted = this.products.Delete(id);
+
+            this.TempData[Messagekey] = "Successfully deleted product";
 
             return RedirectToAction(nameof(All));
         }

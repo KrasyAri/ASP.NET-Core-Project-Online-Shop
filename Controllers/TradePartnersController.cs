@@ -8,6 +8,8 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
 
+    using static Data.WebConstants;
+
     public class TradePartnersController : Controller
 
     {
@@ -48,7 +50,8 @@
             this.data.TradePartners.Add(tradePartnerData);
             this.data.SaveChanges();
 
-            
+            this.TempData[Messagekey] = "Gongratulation! You are now our Trade Partner";
+
             return RedirectToAction(nameof(ProductsController.All), "Products"); 
                 
         }

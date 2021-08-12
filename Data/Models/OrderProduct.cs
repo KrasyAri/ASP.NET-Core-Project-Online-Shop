@@ -16,7 +16,7 @@
         [Required]
         public int ProductId { get; set; }
 
-        public Product product { get; set; }
+        public Product Product { get; set; }
 
         public int Quantity { get; set; }
     }
