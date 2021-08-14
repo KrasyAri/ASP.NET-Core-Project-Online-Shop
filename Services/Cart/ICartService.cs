@@ -8,7 +8,7 @@
 
     public interface ICartService
     {
-        //public bool AddToCart(int productId, string userId);
+        public bool AddToCart(int productId, string userId);
 
         public bool Add(int productId, string userId);
 

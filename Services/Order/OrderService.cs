@@ -7,6 +7,7 @@
     using ASP.NET_Core_Project_Online_Shop.Data;
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
+    using ASP.NET_Core_Project_Online_Shop.Models.ShippingDetails;
 
     public class OrderService : IOrderService
     {
@@ -30,6 +31,7 @@
             return order.Id;
         }
 
+        
         public bool FinnishOrder(string userId, int orderId)
         {
             var productsInCart = data.ShoppingCartItems
@@ -102,21 +104,7 @@
             return data.Orders.Any(o => o.Id == orderId && o.UserId == userId);
         }
 
-        public void RemoveOrder(int orderId)
-        {
-            var order = data.Orders
-                .Where(o => o.Id == orderId)
-                .FirstOrDefault();
-
-            var orderProducts = data.OrderProducts
-                .Where(op => op.OrderId == orderId)
-                .ToList();
-
-            data.OrderProducts.RemoveRange(orderProducts);
-            data.Orders.Remove(order);
-            data.SaveChanges();
-        }
-
+       
         public IEnumerable<OrderServiceModel> UsersOrders(string userId)
         {
             var ordersProducts = data.OrderProducts

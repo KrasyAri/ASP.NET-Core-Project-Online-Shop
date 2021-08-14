@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Cart\" />
     <Folder Include="Views\Order\" />
   </ItemGroup>
 

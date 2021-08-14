@@ -13,6 +13,7 @@ namespace ASP.NET_Core_Project_Online_Shop
     using ASP.NET_Core_Project_Online_Shop.Services.TradePartners;
     using ASP.NET_Core_Project_Online_Shop.Data.Models;
     using ASP.NET_Core_Project_Online_Shop.Infrastructures;
+    using ASP.NET_Core_Project_Online_Shop.Services.Cart;
 
     public class Startup
     {
@@ -51,6 +52,7 @@ namespace ASP.NET_Core_Project_Online_Shop
 
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ITradePartnerService, TradePartnerService>();
+            services.AddTransient<ICartService, CartService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

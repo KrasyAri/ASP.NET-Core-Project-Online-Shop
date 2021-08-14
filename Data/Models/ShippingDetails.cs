@@ -10,11 +10,6 @@
         public int Id { get; set; }
 
         [Required]
-        public string UserId { get; set; }
-
-        public User User { get; set; }
-
-        [Required]
         [MaxLength(CountryMaxLenght)]
         public string Country { get; set; }
 
@@ -35,6 +30,5 @@
 
         public string AdditionalInfo { get; set; }
 
-        public IEnumerable<Order> Orders { get; set; }
     }
 }

@@ -65,20 +65,20 @@
 
         }
 
-        //public bool AddToCart(int productId, string userId)
-        //{
-        //    var cartItem = this.GetCartItem(productId, userId);
+        public bool AddToCart(int productId, string userId)
+        {
+            var cartItem = this.GetCartItem(productId, userId);
 
-        //    if (cartItem == null)
-        //    {
-        //        return false;
-        //    }
+            if (cartItem == null)
+            {
+                return false;
+            }
 
-        //    cartItem.Quantity++;
-        //    data.SaveChanges();
+            cartItem.Quantity++;
+            data.SaveChanges();
 
-        //    return true;
-        //}
+            return true;
+        }
 
         public bool Delete(int productId, string userId)
         {
