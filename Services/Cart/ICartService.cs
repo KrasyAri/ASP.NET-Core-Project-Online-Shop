@@ -10,9 +10,9 @@
     {
         public bool AddToCart(int productId, string userId);
 
-        public bool Add(int productId, string userId);
+        public bool AddQuantity(int productId, string userId);
 
-        public bool Remove(int productId, string userId);
+        public bool RemoveQuantity(int productId, string userId);
 
         public bool Delete(int productId, string userId);
 

@@ -6,8 +6,10 @@
     public class CartItem
     {
         [Key]
+        //TODO: Check 
         public string ItemId { get; set; }
 
+        [Required]
         public string UserId { get; set; }
 
         public int Quantity { get; set; }

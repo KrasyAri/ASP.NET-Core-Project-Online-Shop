@@ -12,23 +12,23 @@
         var userIsAdmin = User.IsAdmin();
         var userIsTradePartner = TradePartners.IsTradePartner(userId);
 
-        @if (userIsTradePartner && !userIsAdmin)
-        {
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="All">All Products</a>
-            </li>
-        }
 
-        else if (!userIsAdmin)
+        if (!userIsTradePartner && !userIsAdmin)
         {
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="TradePartners" asp-action="BecomeTradePartner">Become Out Trade Partner</a>
             </li>
+
+        }
+
+        @if (!userIsAdmin)
+        {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyShoppingCart">My Shopping Cart</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyShoppingCart"  asp-route-userId="@userId">My Shopping Cart</a>
             </li>
         }
-        else if (userIsAdmin)
+
+        @if (userIsAdmin)
         {
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="Administration" asp-controller="Products" asp-action="Index">Administration</a>

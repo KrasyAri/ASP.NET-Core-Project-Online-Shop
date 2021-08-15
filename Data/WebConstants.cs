@@ -7,6 +7,6 @@
 
     public class WebConstants
     {
-        public static string Messagekey = "";
+        public static string MessageKey = "";
     }
 }

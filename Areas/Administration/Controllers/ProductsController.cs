@@ -85,7 +85,7 @@
                 product.ProductType,
                 product.Category);
 
-            this.TempData[Messagekey] = "Successfully added product";
+            this.TempData[MessageKey] = "Successfully added product";
 
             return RedirectToAction(nameof(All));
         }
@@ -123,7 +123,7 @@
                 product.ProductType,
                 product.Category);
 
-            this.TempData[Messagekey] = "Successfully edited product";
+            this.TempData[MessageKey] = "Successfully edited product";
 
             return RedirectToAction(nameof(All));
         }
@@ -146,7 +146,7 @@
 
             var deleted = this.products.Delete(id);
 
-            this.TempData[Messagekey] = "Successfully deleted product";
+            this.TempData[MessageKey] = "Successfully deleted product";
 
             return RedirectToAction(nameof(All));
         }

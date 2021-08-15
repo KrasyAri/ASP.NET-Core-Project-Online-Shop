@@ -24,7 +24,7 @@
             this.mapper = mapper;
         }
 
-        public bool Add(int productId, string userId)
+        public bool AddToCart(int productId, string userId)
         {
             var user = GetUser(userId);
 
@@ -65,7 +65,7 @@
 
         }
 
-        public bool AddToCart(int productId, string userId)
+        public bool AddQuantity(int productId, string userId)
         {
             var cartItem = this.GetCartItem(productId, userId);
 
@@ -76,6 +76,24 @@
 
             cartItem.Quantity++;
             data.SaveChanges();
+
+            return true;
+        }
+
+        public bool RemoveQuantity(int productId, string userId)
+        {
+            var cartItem = this.GetCartItem(productId, userId);
+
+            if (cartItem == null)
+            {
+                return false;
+            }
+
+            if (cartItem.Quantity > 1)
+            {
+                cartItem.Quantity--;
+                data.SaveChanges();
+            }
 
             return true;
         }
@@ -95,23 +113,7 @@
             return true;
         }
 
-        public bool Remove(int productId, string userId)
-        {
-            var cartItem = this.GetCartItem(productId, userId);
-
-            if (cartItem == null)
-            {
-                return false;
-            }
-
-            if (cartItem.Quantity > 1)
-            {
-                cartItem.Quantity--;
-                data.SaveChanges();
-            }
-
-            return true;
-        }
+       
 
 
         public IEnumerable<CartViewServiceMode> UsersCart(string userId) => data.ShoppingCartItems

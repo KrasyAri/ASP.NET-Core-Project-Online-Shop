@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<ProductServiceModel>
 
+@using ASP.NET_Core_Project_Online_Shop.Data.Models
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
 <div class="row">
     @foreach (var product in Model)
     {
@@ -9,14 +15,22 @@
         <div class="card-body text-center">
             <h5 class="card-title text-center">@product.Price BGN  @product.Name @product.Series (@product.CategoryName)</h5>
             <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="btn btn-danger">View</a>
-              @if (User.IsAdmin())
-              {
-                <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-danger">Edit</a>
-                <a asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
-              }
+
+
+            @if (SignInManager.IsSignedIn(User) && !User.IsAdmin())
+             {
+                <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@product.Id" asp-route-userId=@User.Id() class="btn btn-danger">Add To Shopping Cart</a>
+             }
+            else if (!User.IsAdmin())
+            {
+                <a class="nav-link text-danger" asp-area="Identity" asp-page="/Account/Login"> Sign in to shop <i class="fas fa-arrow-right"></i> </a> 
+            }
+            else if (User.IsAdmin())
+            {
+                 <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-danger">Edit</a>
+                 <a asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
+            }
         </div>
     </div>
-</div>
-    
-    }
+</div>}
 </div>
