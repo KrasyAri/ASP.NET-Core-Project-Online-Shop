@@ -17,12 +17,13 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Product Code</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Product Series</th>
-                    <th scope="col">Trade Partner Price</th>
-                    <th scope="col">Client Price</th>
+                    <th scope="col"class="text-center text-danger">Image</th>
+                    <th scope="col"class="text-center text-danger">Product Code</th>
+                    <th scope="col"class="text-center text-danger">Product Name</th>
+                    <th scope="col"class="text-center text-danger">Product Series</th>
+                    <th scope="col"class="text-center text-danger">Trade Partner Price</th>
+                    <th scope="col"class="text-center text-danger">Client Price</th>
+                    <th scope="col"class="text-center text-danger">Take action</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +34,8 @@
                     <th scope="col">@Model.Series</th>
                     <th scope="col">@Model.TradePartnerPrice</th>
                     <th scope="col">@Model.Price</th>
+                    <th scope="col"><a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-userId="@User.Id() "class="text-black-50">Add To Shopping Cart</a> | 
+                        <a asp-action="All" class="text-black-50">Back to List</a></th>
                 </tr>
             </tbody>
         </table>  
@@ -42,19 +45,21 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Product Code</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Product Series</th>
-                    <th scope="col">Client Price</th>
+                    <th scope="col"class="text-center text-danger">Image</th>
+                    <th scope="col"class="text-center text-danger">Product Code</th>
+                    <th scope="col"class="text-center text-danger">Product Name</th>
+                    <th scope="col"class="text-center text-danger">Product Series</th>
+                    <th scope="col"class="text-center text-danger">Client Price</th>
+                    <th scope="col"class="text-center text-danger">Take action</th>
                 </tr>
             <tbody>
                 <tr>
-                    <th scope="col"><img width="50" height="50" src="@Model.ImageUrl"/></th>
+                    <th scope="col"><img width="50" height="50" src="@Model.ImageUrl" /></th>
                     <th scope="col">@Model.ProductCode</th>
                     <th scope="col">@Model.Name</th>
                     <th scope="col">@Model.Series</th>
                     <th scope="col">@Model.Price</th>
+                    <th scope="col"><a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-userId="@User.Id()" class="text-black-50">Add To Shopping Cart</a> | <a asp-action="All" class="text-black-50">Back to List</a></th>
                 </tr>
             </tbody>
         </table> 
@@ -66,11 +71,12 @@ else
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th scope="col">Image</th>
-            <th scope="col">Product Code</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Product Series</th>
-            <th scope="col">Client Price</th>
+            <th scope="col"class="text-center text-danger">Image</th>
+            <th scope="col"class="text-center text-danger">Product Code</th>
+            <th scope="col"class="text-center text-danger">Product Name</th>
+            <th scope="col"class="text-center text-danger">Product Series</th>
+            <th scope="col"class="text-center text-danger">Client Price</th>
+
         </tr>
     <tbody>
         <tr>
@@ -79,9 +85,9 @@ else
             <th scope="col">@Model.Name</th>
             <th scope="col">@Model.Series</th>
             <th scope="col">@Model.Price</th>
-        </tr>
     </tbody>
 </table>
+
 }
 
 

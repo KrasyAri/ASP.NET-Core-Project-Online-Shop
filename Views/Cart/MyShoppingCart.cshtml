@@ -47,13 +47,13 @@ else
                                 <th scope="col">@product.TradePartnerPrice</th>
                                 <th scope="col">
                                     <div class="input-group w-75">
-                                        <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Remove" asp-route-productId=@product.Id asp-route-userId=@User.Id()>-</a>
+                                        <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Remove" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>-</a>
                                         <input type="text" class="form-control text-center" id="quantity" value="@product.Quantity">
-                                        <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Add" asp-route-productId=@product.Id asp-route-userId=@User.Id()>+</a>
+                                        <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Add" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>+</a>
                                     </div>
                                 </th>
                                 <th scope="col">
-                                    <a class="btn btn-danger mb-3" asp-controller="Cart" asp-action="Delete" asp-route-productId=@product.Id asp-route-userId=@User.Id()>Remove</a>
+                                    <a class="btn btn-danger mb-3" asp-controller="Cart" asp-action="Delete" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>Remove</a>
                                 </th>
                             </tr>
                         </tbody>
@@ -101,13 +101,13 @@ else
                         <th scope="col">@product.ProductPrice</th>
                         <th scope="col">
                             <div class="input-group w-75">
-                                <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Remove" asp-route-productId=@product.Id asp-route-userId=@User.Id()>-</a>
+                                <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Remove" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>-</a>
                                 <input type="text" class="form-control text-center" id="quantity" value="@product.Quantity">
-                                <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Add" asp-route-productId=@product.Id asp-route-userId=@User.Id()>+</a>
+                                <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Add" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>+</a>
                             </div>
                         </th>
                         <th scope="col">
-                            <a class="btn btn-danger mb-3" asp-controller="Cart" asp-action="Delete" asp-route-productId=@product.Id asp-route-userId=@User.Id()>Remove</a>
+                            <a class="btn btn-danger mb-3" asp-controller="Cart" asp-action="Delete" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>Remove</a>
                         </th>
                     </tr>
                 </tbody>

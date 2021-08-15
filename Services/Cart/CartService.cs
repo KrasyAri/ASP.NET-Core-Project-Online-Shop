@@ -24,6 +24,11 @@
             this.mapper = mapper;
         }
 
+        public IEnumerable<CartViewServiceMode> UsersCart(string userId) => data.ShoppingCartItems
+          .Where(citem => citem.UserId == userId)
+          .ProjectTo<CartViewServiceMode>(this.mapper)
+          .ToList();
+
         public bool AddToCart(int productId, string userId)
         {
             var user = GetUser(userId);
@@ -33,7 +38,9 @@
                 return false;
             }
 
-            var product = GetProduct(productId);
+            var product = data.Products
+                .Where(p => p.Id == productId)
+                .FirstOrDefault();
 
             if (product == null)
             {
@@ -112,14 +119,6 @@
 
             return true;
         }
-
-       
-
-
-        public IEnumerable<CartViewServiceMode> UsersCart(string userId) => data.ShoppingCartItems
-            .Where(citem => citem.UserId == userId)
-            .ProjectTo<CartViewServiceMode>(this.mapper)
-            .ToList();
 
 
         private Product GetProduct(int productId) 
