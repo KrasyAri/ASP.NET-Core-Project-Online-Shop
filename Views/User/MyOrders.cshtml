@@ -18,7 +18,7 @@
     {
     <div class="row">
         <div class="col-8">
-            <table class="table table-bordered">
+            <table class="table table-bordered text-center">
                 <thead>
                     <tr>
                         <th>Order №</th>
@@ -33,28 +33,28 @@
                     {
                         foreach (var item in order.Products)
                         {
-    <tr>
-        <td scope="col">@order.OrderId</td>
-        <td scope="col">@item.ProductName</td>
-        <td scope="col">@item.TradePartnerPrice BGN.</td>
-        <td scope="col" class="text-center">@item.Quantity</td>
-        <td scope="col" class="text-center">@item.TradePartnerTotalPrice BGN.</td>
-    </tr>
+                                <tr>
+                                    <td scope="col">@order.OrderId</td>
+                                    <td scope="col">@item.ProductName</td>
+                                    <td scope="col">@item.TradePartnerPrice BGN.</td>
+                                    <td scope="col" class="text-center">@item.Quantity</td>
+                                    <td scope="col" class="text-center">@item.TradePartnerTotalPrice BGN.</td>
+                                </tr>
                         }
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>Order Total Amount:</td>
-        <td scope="col" class="text-center">@order.TradePartnerTotalAmount BGN.</td>
-    </tr>
+                     <tr>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td>Order Total Amount:</td>
+                         <td scope="col" class="text-center">@order.TradePartnerTotalAmount BGN.</td>
+                     </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td scope="col">
-                                <a class="btn btn-primary" asp-area="" asp-controller="Cart" asp-action="MyShoppingCart" asp-route-userId="@User.Id()">Go to Shopping Cart</a>
+                                <a class="btn btn-danger" asp-area="" asp-controller="Cart" asp-action="MyShoppingCart" asp-route-userId="@User.Id()">Go to Shopping Cart</a>
                             </td>
                         </tr>
                     }
@@ -66,7 +66,7 @@
     {
     <div class="row">
         <div class="col-8">
-            <table class="table table-bordered">
+            <table class="table table-bordered text-center">
                 <thead>
                     <tr>
                         <th>Order №</th>
@@ -102,7 +102,7 @@
                             <td></td>
                             <td></td>
                             <td scope="col">
-                                <a class="btn btn-primary" asp-area="" asp-controller="Cart" asp-action="MyShoppingCart" asp-route-userId="@User.Id()">Go to Shopping Cart</a>
+                                <a class="btn btn-danger" asp-area="" asp-controller="Cart" asp-action="MyShoppingCart" asp-route-userId="@User.Id()">Go to Shopping Cart</a>
                             </td>
                         </tr>
                     }

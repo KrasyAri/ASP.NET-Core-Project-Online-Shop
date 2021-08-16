@@ -7,7 +7,6 @@
     using ASP.NET_Core_Project_Online_Shop.Data;
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
-    using ASP.NET_Core_Project_Online_Shop.Models.ShippingDetails;
 
     public class OrderService : IOrderService
     {
@@ -19,6 +18,7 @@
 
         public int CreateOrderInTheDatabase(string userId)
         {
+
             var order = new Order
             {
                 OrderDate = DateTime.UtcNow,
@@ -28,7 +28,10 @@
             data.Orders.Add(order);
             data.SaveChanges();
 
-            return order.Id;
+
+            var orderId = order.Id;
+
+            return orderId;
         }
 
         

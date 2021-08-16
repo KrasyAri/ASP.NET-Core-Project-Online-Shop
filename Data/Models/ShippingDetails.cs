@@ -30,5 +30,11 @@
 
         public string AdditionalInfo { get; set; }
 
+        [Required]
+        public string UserId { get; set; }
+
+        public User User { get; set; }
+
+
     }
 }

@@ -24,9 +24,5 @@
 
         public IEnumerable<OrderProduct> OrderProducts { get; set; }
 
-        public int ShippingDetailsId { get; set; }
-
-        [Required]
-        public ShippingDetails ShippingDetails { get; set; }
     }
 }

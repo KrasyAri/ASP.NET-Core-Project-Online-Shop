@@ -1,0 +1,45 @@
+﻿@model ShippingDetailsFormModel
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Country"></label>
+                <input asp-for="Country" class="form-control">
+                <span asp-validation-for="Country" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City"></label>
+                <input asp-for="City" class="form-control">
+                <span asp-validation-for="City" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adress"></label>
+                <input asp-for="Adress" class="form-control">
+                <span asp-validation-for="Adress" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" class="form-control">
+                <span asp-validation-for="PhoneNumber" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryCompanyOffice"></label>
+                <input asp-for="DeliveryCompanyOffice" class="form-control">
+                <span asp-validation-for="DeliveryCompanyOffice" class="small text-danger" placeholder="Econt Office, Druzhba, Iliya Beshkov str."></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdditionalInfo"></label>
+                <input asp-for="AdditionalInfo" class="form-control">
+                <span asp-validation-for="AdditionalInfo" class="small text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <a class="btn btn-danger" asp-area="" asp-controller="Order" asp-action="OrderDetails" asp-route-userId="@User.Id()">Go Back</a>
+                <a class="btn btn-danger" asp-area="" asp-controller="Order" asp-action="FinnishOrder" asp-route-userId="@User.Id()">Finnish Order</a>
+            </div>
+        </form>
+        </div>
+    </div>

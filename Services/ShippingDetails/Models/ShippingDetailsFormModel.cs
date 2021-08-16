@@ -1,6 +1,5 @@
-﻿namespace ASP.NET_Core_Project_Online_Shop.Models.ShippingDetails
+﻿namespace ASP.NET_Core_Project_Online_Shop.Services.ShippingDetails.Models
 {
-    
     using System.ComponentModel.DataAnnotations;
 
     using static Data.DataConstants.ShippingDetails;
@@ -28,6 +27,9 @@
 
         [Required]
         public string AdditionalInfo { get; set; }
+
+        //[Required]
+        //public string UserId { get; set; }
 
     }
 }

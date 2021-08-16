@@ -28,21 +28,22 @@
         }
 
         [Authorize]
-        public IActionResult FinnishOrder(string id)
+        public IActionResult FinnishOrder(string userId)
         {
-            if (User.Id() != id)
+            if (User.Id() != userId)
             {
                 return BadRequest();
             }
 
-            int orderId = orderService.CreateOrderInTheDatabase(id);
+            int orderId = orderService.CreateOrderInTheDatabase(userId);
 
-            var success = orderService.FinnishOrder(id, orderId);
+
+            var success = orderService.FinnishOrder(userId, orderId);
 
             if (success)
             {
                 this.TempData[MessageKey] = "Your order is successfuly finised!";
-                return RedirectToAction("MyOrders", "Users", new { id = id });
+                return RedirectToAction("MyOrders", "User", new { id = userId });
             }
 
             this.TempData[MessageKey] = "No products in you Cart!";
