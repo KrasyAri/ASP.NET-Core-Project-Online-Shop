@@ -14,14 +14,6 @@
 
 <h1 class="text-center">@ViewData["Title"]</h1>
 
-@if (Model.Count() == 0)
-{
-    <h3 class="text-center">Your don't have orders.</h3>
-    <a class="btn btn-danger" role="button" asp-controller="Products" asp-action="All">Start Shopping Now!</a> 
-}
-else
-{
-
     @if (userIsTradePartner)
     {
     <div class="row">
@@ -31,8 +23,7 @@ else
                     <tr>
                         <th>Order №</th>
                         <th>Product Name</th>
-                        <th>Product Price</th>
-                        <th>Product Trade Partner Price</th>
+                        <th>Trade Partner Price</th>
                         <th>Product Quantity</th>
                         <th>Total Price</th>
                     </tr>
@@ -45,10 +36,9 @@ else
     <tr>
         <td scope="col">@order.OrderId</td>
         <td scope="col">@item.ProductName</td>
-        <td scope="col">@item.Price lv.</td>
         <td scope="col">@item.TradePartnerPrice BGN.</td>
         <td scope="col" class="text-center">@item.Quantity</td>
-        <td scope="col" class="text-center">@item.TotalPrice BGN.</td>
+        <td scope="col" class="text-center">@item.TradePartnerTotalPrice BGN.</td>
     </tr>
                         }
     <tr>
@@ -56,7 +46,7 @@ else
         <td></td>
         <td></td>
         <td>Order Total Amount:</td>
-        <td scope="col" class="text-center">@order.TotalAmount lv.</td>
+        <td scope="col" class="text-center">@order.TradePartnerTotalAmount BGN.</td>
     </tr>
                         <tr>
                             <td></td>
@@ -94,7 +84,7 @@ else
     <tr>
         <td scope="col">@order.OrderId</td>
         <td scope="col">@item.ProductName</td>
-        <td scope="col">@item.Price lv.</td>
+        <td scope="col">@item.Price BGN.</td>
         <td scope="col" class="text-center">@item.Quantity</td>
         <td scope="col" class="text-center">@item.TotalPrice BGN.</td>
     </tr>
@@ -121,4 +111,4 @@ else
         </div>
     </div>
     }
-}
+

@@ -138,14 +138,17 @@
                         {
                             ProductName = item.Product.Name,
                             Price = item.Product.Price,
+                            TradePartnerPrice = item.Product.TradePartnerPrice,
                             Quantity = item.Quantity,
-                            TotalPrice = item.Product.Price * item.Quantity
+                            TotalPrice = item.Product.Price * item.Quantity,
+                            TradePartnerTotalPrice = item.Product.TradePartnerPrice * item.Quantity
                         };
 
                         order.Products.Add(product);
                     }
                 }
 
+                order.TradePartnerTotalAmount = order.Products.Sum(p => p.TradePartnerTotalPrice);
                 order.TotalAmount = order.Products.Sum(p => p.TotalPrice);
 
                 orders.Add(order);
