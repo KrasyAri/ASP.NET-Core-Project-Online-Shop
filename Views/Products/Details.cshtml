@@ -34,8 +34,7 @@
                     <th scope="col">@Model.Series</th>
                     <th scope="col">@Model.TradePartnerPrice</th>
                     <th scope="col">@Model.Price</th>
-                    <th scope="col"><a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-userId="@User.Id() "class="text-black-50">Add To Shopping Cart</a> | 
-                        <a asp-action="All" class="text-black-50">Back to List</a></th>
+                    <th scope="col"><a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-userId="@User.Id()" class="text-black-50">Add To Shopping Cart</a> | <a asp-action="All" class="text-black-50">Back to List</a></th>
                 </tr>
             </tbody>
         </table>  

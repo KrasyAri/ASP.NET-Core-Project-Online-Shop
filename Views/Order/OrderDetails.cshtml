@@ -1,0 +1,102 @@
+﻿@model OrderServiceModel
+
+@using ASP.NET_Core_Project_Online_Shop.Data.Models
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<User> UserManager
+@inject ITradePartnerService TradePartners
+
+@{
+    var userId = User.Id();
+    var userIsTradePartner = TradePartners.IsTradePartner(userId);
+}
+
+@{ ViewData["Title"] = "Order details"; }
+
+@if (userIsTradePartner)
+{
+    <div class="row">
+        <div class="col-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Order №</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Client Price</th>
+                        <th scope="col">Trade Partner Price</th>
+                        <th scope="col">Product Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{ var orderNumber = 0;
+
+                    @foreach (var product in Model.Products)
+                    {
+                        orderNumber++;
+
+                    <tr>
+                        <td>@orderNumber</td>
+                        <th scope="col">@product.ProductName</th>
+                        <th scope="col">@product.Price</th>
+                        <th scope="col">@product.TradePartnerPrice</th>
+                        <th scope="col">@product.Quantity</th>
+                    </tr>
+                    }
+                        }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total order amount:</td>
+                        <td class="text-center">@Model.TotalAmount lv.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Order №</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Client Price</th>
+                        <th scope="col">Product Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @{ var orderNumber = 0;
+                    @foreach (var product in Model.Products)
+                    {
+                        orderNumber++;
+
+                    <tr>
+                        <td>@orderNumber</td>
+                        <th scope="col">@product.ProductName</th>
+                        <th scope="col">@product.Price</th>
+                        <th scope="col">@product.Quantity</th>
+                    </tr>
+                    }
+                       }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total order amount:</td>
+                        <td class="text-center">@Model.TotalAmount lv.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+<div class="text-center">
+    <a class="btn btn-primary" asp-area="" asp-controller="Cart" asp-action="MyShoppingCart" asp-route-userId="@User.Id()">Go Back</a>
+    <a class="btn btn-danger" asp-area="" asp-controller="ShippingDetails" asp-action="ShippingDetails" asp-route-id="@User.Id()">Continue with Shipping Details Information </a>
+</div>

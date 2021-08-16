@@ -17,6 +17,5 @@
        
         public IEnumerable<OrderServiceModel> UsersOrders(string userId);
 
-        public bool OrderExists(int orderId, string userId);
     }
 }

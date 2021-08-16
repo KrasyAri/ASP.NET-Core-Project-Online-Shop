@@ -99,12 +99,6 @@
             return newOrder;
         }
 
-        public bool OrderExists(int orderId, string userId)
-        {
-            return data.Orders.Any(o => o.Id == orderId && o.UserId == userId);
-        }
-
-       
         public IEnumerable<OrderServiceModel> UsersOrders(string userId)
         {
             var ordersProducts = data.OrderProducts

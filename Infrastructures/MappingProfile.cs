@@ -18,6 +18,7 @@
 
             this.CreateMap<CartItem, CartViewServiceMode>();
 
+
         }
     }
 }
