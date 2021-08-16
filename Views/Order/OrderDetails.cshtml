@@ -25,11 +25,13 @@
                         <th scope="col">Client Price</th>
                         <th scope="col">Trade Partner Price</th>
                         <th scope="col">Product Quantity</th>
+                        <th scope="col">Products Amount</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     @{ var orderNumber = 0;
+                    }
 
                     @foreach (var product in Model.Products)
                     {
@@ -41,15 +43,16 @@
                         <th scope="col">@product.Price</th>
                         <th scope="col">@product.TradePartnerPrice</th>
                         <th scope="col">@product.Quantity</th>
+                        <th scope="col">@product.TradePartnerTotalPrice</th>
                     </tr>
                     }
-                        }
+                       
                     <tr>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td>Total order amount:</td>
-                        <td class="text-center">@Model.TotalAmount lv.</td>
+                        <td class="text-center">@Model.TradePartnerTotalAmount BGN.</td>
                     </tr>
                 </tbody>
             </table>
@@ -67,6 +70,7 @@ else
                         <th scope="col">Product Name</th>
                         <th scope="col">Client Price</th>
                         <th scope="col">Product Quantity</th>
+                        <th scope="col">Products Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,6 +84,7 @@ else
                         <th scope="col">@product.ProductName</th>
                         <th scope="col">@product.Price</th>
                         <th scope="col">@product.Quantity</th>
+                        <th scope="col">@product.TotalPrice</th>
                     </tr>
                     }
                        }
@@ -88,7 +93,7 @@ else
                         <td></td>
                         <td></td>
                         <td>Total order amount:</td>
-                        <td class="text-center">@Model.TotalAmount lv.</td>
+                        <td class="text-center">@Model.TotalAmount BGN.</td>
                     </tr>
                 </tbody>
             </table>
@@ -97,6 +102,6 @@ else
 }
 
 <div class="text-center">
-    <a class="btn btn-primary" asp-area="" asp-controller="Cart" asp-action="MyShoppingCart" asp-route-userId="@User.Id()">Go Back</a>
+    <a class="btn btn-danger" asp-area="" asp-controller="Cart" asp-action="MyShoppingCart" asp-route-userId="@User.Id()">Go Back</a>
     <a class="btn btn-danger" asp-area="" asp-controller="ShippingDetails" asp-action="ShippingDetails" asp-route-id="@User.Id()">Continue with Shipping Details Information </a>
 </div>

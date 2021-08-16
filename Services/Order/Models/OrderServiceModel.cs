@@ -11,6 +11,10 @@
 
         public ICollection<ProductOrderServiceModel> Products { get; set; }
 
+        //public decimal ProductsAmount { get; set; }
+
         public decimal TotalAmount { get; set; }
+
+        public decimal TradePartnerTotalAmount { get; set; }
     }
 }

@@ -1,5 +1,8 @@
 ﻿@model List<CartViewServiceMode>
 
+@{ ViewData["Title"] = "My Cart"; }
+
+
 @using ASP.NET_Core_Project_Online_Shop.Data.Models
 @using Microsoft.AspNetCore.Identity
 
@@ -11,7 +14,6 @@
     var userIsTradePartner = TradePartners.IsTradePartner(userId);
 }
 
-@{ ViewData["Title"] = "My Cart"; }
 
 @if (Model.Count() == 0)
 {
@@ -20,66 +22,10 @@
 }
 else
 {
-    if (userIsTradePartner)
-    {
-        <div class="row">
-            <div class="col-8">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Image</th>
-                            <th scope="col">Product Code</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Client Price</th>
-                            <th scope="col">Trade Partner Price</th>
-                            <th scope="col">Product Quantity</th>
-                            <th scope="col">Remove From Cart</th>
-                        </tr>
-                    </thead>
-                    @foreach (var product in Model)
-                    {
-                        <tbody>
-                            <tr>
-                                <th scope="col"><img width="75" height="75" src="@product.ImageUrl" /></th>
-                                <th scope="col">@product.ProductCode</th>
-                                <th scope="col">@product.ProductName</th>
-                                <th scope="col">@product.ProductPrice</th>
-                                <th scope="col">@product.TradePartnerPrice</th>
-                                <th scope="col">
-                                    <div class="input-group w-75">
-                                        <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Remove" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>-</a>
-                                        <input type="text" class="form-control text-center" id="quantity" value="@product.Quantity">
-                                        <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Add" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>+</a>
-                                    </div>
-                                </th>
-                                <th scope="col">
-                                    <a class="btn btn-danger mb-3" asp-controller="Cart" asp-action="Delete" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>Remove</a>
-                                </th>
-                            </tr>
-                        </tbody>
-                    }
-                </table>
-            </div>
-            @{ var totalSum = Model.Sum(x => (x.TradePartnerPrice * x.Quantity));
-                var totalProductsCount = Model.Sum(x => x.Quantity); }
-            <div class="col-3 ">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">You Order</h5>
-                        <hr />
-                        <p class="card-text">Products count: @totalProductsCount</p>
-                        <h6 class="card-subtitle mb-2 ">Total price: @totalSum lv.</h6>
-                        <a class="btn btn-danger" asp-controller="Order" asp-action="OrderDetails" asp-route-id="@User.Id()">Proceed with order</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    }
-    else
+    @if (userIsTradePartner)
     {
 <div class="row">
-    <div class="col-9">
+    <div class="col-8">
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -87,6 +33,7 @@ else
                     <th scope="col">Product Code</th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Client Price</th>
+                    <th scope="col">Trade Partner Price</th>
                     <th scope="col">Product Quantity</th>
                     <th scope="col">Remove From Cart</th>
                 </tr>
@@ -95,10 +42,11 @@ else
             {
                 <tbody>
                     <tr>
-                        <th scope="col"><img width="75" height="75" src="@product.ImageUrl" /></th>
-                        <th scope="col">@product.ProductCode</th>
+                        <th scope="col"><img width="50" height="50" src="@product.ProductImageUrl" /></th>
+                        <th scope="col">@product.ProductProductCode</th>
                         <th scope="col">@product.ProductName</th>
                         <th scope="col">@product.ProductPrice</th>
+                        <th scope="col">@product.ProductTradePartnerPrice</th>
                         <th scope="col">
                             <div class="input-group w-75">
                                 <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Remove" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>-</a>
@@ -114,7 +62,7 @@ else
             }
         </table>
     </div>
-    @{ var totalSum = Model.Sum(x => (x.ProductPrice * x.Quantity));
+    @{ var totalSum = Model.Sum(x => (x.ProductTradePartnerPrice * x.Quantity));
         var totalProductsCount = Model.Sum(x => x.Quantity); }
     <div class="col-3 ">
         <div class="card">
@@ -122,12 +70,67 @@ else
                 <h5 class="card-title">You Order</h5>
                 <hr />
                 <p class="card-text">Products count: @totalProductsCount</p>
-                <h6 class="card-subtitle mb-2 ">Total price: @totalSum lv.</h6>
+                <h6 class="card-subtitle mb-2 ">Total price: @totalSum BGN.</h6>
                 <a class="btn btn-danger" asp-controller="Order" asp-action="OrderDetails" asp-route-id="@User.Id()">Proceed with order</a>
             </div>
         </div>
     </div>
 </div>
+
+      
+}
+    else
+    {
+        <div class="row">
+            <div class="col-9">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Product Code</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Client Price</th>
+                            <th scope="col">Product Quantity</th>
+                            <th scope="col">Remove From Cart</th>
+                        </tr>
+                    </thead>
+                    @foreach (var product in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <th scope="col"><img width="75" height="75" src="@product.ProductImageUrl" /></th>
+                                <th scope="col">@product.ProductProductCode</th>
+                                <th scope="col">@product.ProductName</th>
+                                <th scope="col">@product.ProductPrice</th>
+                                <th scope="col">
+                                    <div class="input-group w-75">
+                                        <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Remove" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>-</a>
+                                        <input type="text" class="form-control text-center" id="quantity" value="@product.Quantity">
+                                        <a class="btn btn-light border-dark" asp-controller="Cart" asp-action="Add" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>+</a>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <a class="btn btn-danger mb-3" asp-controller="Cart" asp-action="Delete" asp-route-productId=@product.ProductId asp-route-userId=@User.Id()>Remove</a>
+                                </th>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+            @{ var totalSum = Model.Sum(x => (x.ProductPrice * x.Quantity));
+                var totalProductsCount = Model.Sum(x => x.Quantity); }
+            <div class="col-3 ">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">You Order</h5>
+                        <hr />
+                        <p class="card-text">Products count: @totalProductsCount</p>
+                        <h6 class="card-subtitle mb-2 ">Total price: @totalSum lv.</h6>
+                        <a class="btn btn-danger" asp-controller="Order" asp-action="OrderDetails" asp-route-id="@User.Id()">Proceed with order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
 
 }

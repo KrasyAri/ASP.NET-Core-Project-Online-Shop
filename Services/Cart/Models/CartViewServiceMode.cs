@@ -4,17 +4,15 @@
     {
         public int ProductId { get; init; }
 
-        public string ProductCode { get; init; }
+        public string ProductProductCode { get; init; }
 
         public string ProductName { get; init; }
 
         public decimal ProductPrice { get; init; }
 
-        public decimal TradePartnerPrice { get; init; }
+        public decimal ProductTradePartnerPrice { get; init; }
 
-        public string ImageUrl { get; init; }
-
-        //public string UserId { get; init; }
+        public string ProductImageUrl { get; init; }
 
         public int Quantity { get; set; }
 

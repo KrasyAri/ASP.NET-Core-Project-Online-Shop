@@ -14,6 +14,8 @@
 
         private readonly IOrderService orderService;
 
+        public UserController(IOrderService orderService) 
+            => this.orderService = orderService;
 
         [Authorize]
         public IActionResult MyOrders(string id)

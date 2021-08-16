@@ -85,14 +85,18 @@
                 {
                     ProductName = item.Product.Name,
                     Price = item.Product.Price,
+                    //new
+                    TradePartnerPrice = item.Product.TradePartnerPrice,
                     Quantity = item.Quantity,
                 };
 
                 newItem.TotalPrice = newItem.Price * newItem.Quantity;
+                newItem.TradePartnerTotalPrice = newItem.TradePartnerPrice * newItem.Quantity;
 
                 newOrder.Products.Add(newItem);
             }
 
+            newOrder.TradePartnerTotalAmount = newOrder.Products.Sum(p => p.TradePartnerTotalPrice);
             newOrder.TotalAmount = newOrder.Products.Sum(p => p.TotalPrice);
             newOrder.Products = newOrder.Products.OrderBy(p => p.ProductName).ToList();
 
