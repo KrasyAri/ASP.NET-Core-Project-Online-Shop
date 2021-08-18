@@ -10,16 +10,13 @@
 
     public class ProductsController : Controller
     {
-        private readonly OnlineShopDbContext data;
+       
         private readonly IProductService products;
-        private readonly IMapper mapper;
 
 
-        public ProductsController(OnlineShopDbContext data, IProductService products, IMapper mapper)
+        public ProductsController(IProductService products)
         {
-            this.data = data;
             this.products = products;
-            this.mapper = mapper;
         }
 
         public IActionResult All([FromQuery] AllProductsQueryModel query)
