@@ -7,6 +7,7 @@
 
     public class ShippingDetails
     {
+        [Required]
         public int Id { get; set; }
 
         [Required]
@@ -31,10 +32,9 @@
         public string AdditionalInfo { get; set; }
 
         [Required]
+        public int OrderId { get; set; }
+
+        [Required]
         public string UserId { get; set; }
-
-        public User User { get; set; }
-
-
     }
 }

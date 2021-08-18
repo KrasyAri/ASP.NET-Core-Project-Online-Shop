@@ -18,7 +18,7 @@
         }
 
         [Authorize]
-        public IActionResult AddShippingDetails()
+        public IActionResult AddShippingDetails(string userId)
         {
             
             return View();
@@ -26,7 +26,7 @@
 
         [HttpPost]
         [Authorize]
-        public IActionResult AddShippingDetails(ShippingDetailsFormModel shippingDetails)
+        public IActionResult AddShippingDetails(ShippingDetailsFormModel shippingDetails, string userId)
         {
 
             if (!ModelState.IsValid)
@@ -34,16 +34,19 @@
                 return View(shippingDetails);
             }
 
-            this.shippingDetailsService.AddShippingDetails(
+            this.shippingDetailsService.AddDetails(
                shippingDetails.Country,
                shippingDetails.City,
                shippingDetails.Adress,
                shippingDetails.PhoneNumber,
                shippingDetails.DeliveryCompanyOffice,
-               shippingDetails.AdditionalInfo
+               shippingDetails.AdditionalInfo,
+               shippingDetails.OrderId,
+               shippingDetails.UserId
+               
                 );
 
-            return RedirectToAction("FinnishOrder", "Order");
+            return RedirectToAction("FinnishOrder", "Order", new { id = userId});
         }
     }
 }

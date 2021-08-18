@@ -126,7 +126,7 @@ else
                         <hr />
                         <p class="card-text">Products count: @totalProductsCount</p>
                         <h6 class="card-subtitle mb-2 ">Total price: @totalSum lv.</h6>
-                        <a class="btn btn-danger" asp-controller="Order" asp-action="OrderDetails" asp-route-id="@User.Id()">Proceed with order</a>
+                        <a class="btn btn-danger" asp-controller="Order" asp-action="OrderDetails" asp-route-userId="@User.Id()">Proceed with order</a>
                     </div>
                 </div>
             </div>

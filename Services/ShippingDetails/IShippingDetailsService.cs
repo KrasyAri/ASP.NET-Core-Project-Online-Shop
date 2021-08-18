@@ -3,6 +3,6 @@
     
     public interface IShippingDetailsService
     {
-        public int AddShippingDetails(string country, string city, string adress, string phonenumber, string deliveryCompanyOffice, string additionalInfo);
+        public int AddDetails( string country, string city, string adress, string phonenumber, string deliveryCompanyOffice, string additionalInfo, int orderId, string userId);
     }
 }

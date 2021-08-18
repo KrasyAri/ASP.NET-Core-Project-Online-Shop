@@ -25,11 +25,12 @@
         [StringLength(DeliveryCompanyMax, MinimumLength = DeliveryCompanyMin)]
         public string DeliveryCompanyOffice { get; set; }
 
-        [Required]
         public string AdditionalInfo { get; set; }
 
-        //[Required]
-        //public string UserId { get; set; }
+        [Required]
+        public int OrderId { get; set; }
 
+        [Required]
+        public string UserId { get; set; }
     }
 }

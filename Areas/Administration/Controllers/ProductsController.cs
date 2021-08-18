@@ -85,8 +85,6 @@
                 product.ProductType,
                 product.Category);
 
-            this.TempData[MessageKey] = "Successfully added product";
-
             return RedirectToAction(nameof(All));
         }
 

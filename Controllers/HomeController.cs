@@ -29,6 +29,8 @@
 
         }
 
+        public IActionResult Contacts() => View();
+
         public IActionResult Privacy()
         {
             return View();

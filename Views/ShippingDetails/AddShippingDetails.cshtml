@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label asp-for="DeliveryCompanyOffice"></label>
                 <input asp-for="DeliveryCompanyOffice" class="form-control">
-                <span asp-validation-for="DeliveryCompanyOffice" class="small text-danger" placeholder="Econt Office, Druzhba, Iliya Beshkov str."></span>
+                <input asp-validation-for="DeliveryCompanyOffice" class="small text-danger" placeholder="Econt Office, Druzhba, Iliya Beshkov str.">
             </div>
             <div class="form-group">
                 <label asp-for="AdditionalInfo"></label>
@@ -38,8 +38,11 @@
 
             <div class="text-center">
                 <a class="btn btn-danger" asp-area="" asp-controller="Order" asp-action="OrderDetails" asp-route-userId="@User.Id()">Go Back</a>
-                <a class="btn btn-danger" asp-area="" asp-controller="Order" asp-action="FinnishOrder" asp-route-userId="@User.Id()">Finnish Order</a>
+
+                <input class="btn btn-danger" type="submit" value="Continue to Finnish Order" asp-route-userId ="@User.Id()"/>
+
             </div>
+
         </form>
         </div>
     </div>

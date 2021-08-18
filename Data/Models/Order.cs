@@ -22,7 +22,12 @@
         [Required]
         public string UserId { get; set; }
 
+        [Required]
+        public int ShippingDetailsId { get; set; }
+
         public IEnumerable<OrderProduct> OrderProducts { get; set; }
+
+        
 
     }
 }

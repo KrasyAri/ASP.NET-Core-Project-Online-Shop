@@ -14,14 +14,14 @@
             => this.orderService = orderService;
 
         [Authorize]
-        public IActionResult MyOrders(string id)
+        public IActionResult MyOrders(string userId)
         {
-            if (User.Id() != id)
+            if (User.Id() != userId)
             {
                 return BadRequest();
             }
 
-            var orders = orderService.UsersOrders(id);
+            var orders = orderService.UsersOrders(userId);
 
             return View(orders);
         }

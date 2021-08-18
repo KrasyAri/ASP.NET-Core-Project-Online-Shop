@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
 {
     [DbContext(typeof(OnlineShopDbContext))]
-    [Migration("20210816195410_ShippingDetailsTableChanged")]
-    partial class ShippingDetailsTableChanged
+    [Migration("20210818114647_AnotherShippingDetailsChanges")]
+    partial class AnotherShippingDetailsChanges
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,9 @@ namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("ShippingDetailsId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -157,18 +160,15 @@ namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("ShippingDetails");
                 });
@@ -445,17 +445,6 @@ namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.ShippingDetails", b =>
-                {
-                    b.HasOne("ASP.NET_Core_Project_Online_Shop.Data.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.TradePartner", b =>

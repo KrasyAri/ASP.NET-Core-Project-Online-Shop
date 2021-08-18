@@ -39,6 +39,9 @@
             var userManager = services.GetRequiredService<UserManager<User>>();
             var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
+            const string adminEmail = "a.arizanova@gmail.com";
+            const string adminPassword = "Admin123";
+
             Task
                 .Run(async () =>
                 {
@@ -51,15 +54,14 @@
 
                     await roleManager.CreateAsync(role);
 
-                    const string adminEmail = "admin@admin.com";
-                    const string adminPassword = "Admin123";
+                   
 
                     var user = new User
                     {
                         Email = adminEmail,
                         UserName = adminEmail,
-                        FirstName = "Admin",
-                        LastName = "Adminov"
+                        FirstName = "Anita",
+                        LastName = "Arizanova"
                         
                     };
 

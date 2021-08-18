@@ -24,7 +24,6 @@
 
         public DbSet<ShippingDetails> ShippingDetails { get; init; }
 
-        public object OrdersProducts { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

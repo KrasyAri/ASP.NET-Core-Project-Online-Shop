@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
 {
     [DbContext(typeof(OnlineShopDbContext))]
-    [Migration("20210803122518_TablesCreated")]
-    partial class TablesCreated
+    [Migration("20210818120139_AnotherShippingDetailsChange")]
+    partial class AnotherShippingDetailsChange
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,21 +21,63 @@ namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.Category", b =>
+            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.CartItem", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "UserId");
+
+                    b.ToTable("ShoppingCartItems");
+                });
+
+            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ShippingDetailsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.OrderProduct", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderProducts");
                 });
 
             modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.Product", b =>
@@ -45,7 +87,7 @@ namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -58,74 +100,81 @@ namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int>("NetWeight")
                         .HasColumnType("int");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductCode")
+                    b.Property<string>("ProductCode")
+                        .IsRequired()
                         .HasMaxLength(7)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(7)");
 
-                    b.Property<int>("ProductTypeId")
+                    b.Property<int>("ProductType")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("SeriesId")
+                    b.Property<int>("Series")
                         .HasColumnType("int");
 
-                    b.Property<double>("TradePartnerPrice")
-                        .HasColumnType("float");
+                    b.Property<decimal>("TradePartnerPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ProductTypeId");
-
-                    b.HasIndex("SeriesId");
 
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.ProductType", b =>
+            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.ShippingDetails", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("AdditionalInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Adress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("DeliveryCompanyOffice")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductTypes");
-                });
-
-            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.Series", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Series");
+                    b.ToTable("ShippingDetails");
                 });
 
             modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.TradePartner", b =>
@@ -142,8 +191,8 @@ namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -372,31 +421,34 @@ namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.Product", b =>
+            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.CartItem", b =>
                 {
-                    b.HasOne("ASP.NET_Core_Project_Online_Shop.Data.Models.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId")
+                    b.HasOne("ASP.NET_Core_Project_Online_Shop.Data.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.OrderProduct", b =>
+                {
+                    b.HasOne("ASP.NET_Core_Project_Online_Shop.Data.Models.Order", "Order")
+                        .WithMany("OrderProducts")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ASP.NET_Core_Project_Online_Shop.Data.Models.ProductType", "ProductType")
-                        .WithMany("Products")
-                        .HasForeignKey("ProductTypeId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                    b.HasOne("ASP.NET_Core_Project_Online_Shop.Data.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ASP.NET_Core_Project_Online_Shop.Data.Models.Series", "Series")
-                        .WithMany("Products")
-                        .HasForeignKey("SeriesId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                    b.Navigation("Order");
 
-                    b.Navigation("Category");
-
-                    b.Navigation("ProductType");
-
-                    b.Navigation("Series");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.TradePartner", b =>
@@ -459,19 +511,9 @@ namespace ASP.NET_Core_Project_Online_Shop.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.Category", b =>
+            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.Order", b =>
                 {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.ProductType", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("ASP.NET_Core_Project_Online_Shop.Data.Models.Series", b =>
-                {
-                    b.Navigation("Products");
+                    b.Navigation("OrderProducts");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,7 +8,7 @@
         private readonly OnlineShopDbContext data;
         public ShippingDetailsService(OnlineShopDbContext data) 
             => this.data = data;
-        public int AddShippingDetails(string country, string city, string adress, string phonenumber, string deliveryCompanyOffice, string additionalInfo)
+        public int AddDetails(string country, string city, string adress, string phonenumber, string deliveryCompanyOffice, string additionalInfo, int orderId, string userId)
         {
 
             var shippingDetailsData = new ShippingDetails
@@ -18,7 +18,10 @@
                 Adress = adress,
                 PhoneNumber = phonenumber,
                 DeliveryCompanyOffice = deliveryCompanyOffice,
-                AdditionalInfo = additionalInfo
+                AdditionalInfo = additionalInfo,
+                OrderId = orderId,
+                UserId = userId
+                
             };
 
             this.data.ShippingDetails.Add(shippingDetailsData);
