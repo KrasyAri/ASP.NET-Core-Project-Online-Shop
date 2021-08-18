@@ -1,17 +1,19 @@
-﻿namespace ASP.NET_Core_Project_Online_Shop.Services.Order.Models
+﻿namespace ASP.NET_Core_Project_Online_Shop.Areas.Administration.Models
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class OrderServiceModel
     {
         public int OrderId { get; init; }
-
-        public string UserId { get; set; }
 
         public ICollection<ProductOrderServiceModel> Products { get; set; }
 
         public decimal TotalAmount { get; set; }
 
         public decimal TradePartnerTotalAmount { get; set; }
+
     }
 }

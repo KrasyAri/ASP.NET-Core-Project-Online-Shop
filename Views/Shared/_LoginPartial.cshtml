@@ -27,14 +27,17 @@
                 <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="MyShoppingCart" asp-route-userId="@userId">My Shopping Cart</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="MyOrders" asp-route-userId="@userId">My Orders</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="MyOrders" asp-route-id="@userId">My Orders</a>
             </li>
         }
 
         @if (userIsAdmin)
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Administration" asp-controller="Products" asp-action="Index">Administration</a>
+                <a class="nav-link text-dark" asp-area="Administration" asp-controller="Order" asp-action="AllUsersOrders">Users Orders</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Administration" asp-controller="Order" asp-action="AllTradePartnersOrders">Trade Partners Orders</a>
             </li>
         }
 

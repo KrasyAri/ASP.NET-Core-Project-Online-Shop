@@ -1,10 +1,7 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Services.Order
 {
     using ASP.NET_Core_Project_Online_Shop.Services.Order.Models;
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public interface IOrderService
     {

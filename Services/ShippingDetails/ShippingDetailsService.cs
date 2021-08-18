@@ -1,14 +1,7 @@
 ﻿namespace ASP.NET_Core_Project_Online_Shop.Services.ShippingDetails
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using ASP.NET_Core_Project_Online_Shop.Data;
     using ASP.NET_Core_Project_Online_Shop.Data.Models;
-    using ASP.NET_Core_Project_Online_Shop.Services.ShippingDetails.Models;
-    using AutoMapper;
-    using ASP.NET_Core_Project_Online_Shop.Infrastructures;
 
     public class ShippingDetailsService : IShippingDetailsService
     {

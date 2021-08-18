@@ -5,11 +5,10 @@
     using ASP.NET_Core_Project_Online_Shop.Data.Models;
     using ASP.NET_Core_Project_Online_Shop.Models;
     using ASP.NET_Core_Project_Online_Shop.Services.Products.Models;
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     public class ProductService : IProductService
     {

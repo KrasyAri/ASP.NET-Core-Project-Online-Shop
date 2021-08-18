@@ -4,7 +4,6 @@
     using ASP.NET_Core_Project_Online_Shop.Models;
     using ASP.NET_Core_Project_Online_Shop.Models.Products;
     using ASP.NET_Core_Project_Online_Shop.Services.Products.Models;
-    using System;
     using System.Collections.Generic;
 
     public interface IProductService

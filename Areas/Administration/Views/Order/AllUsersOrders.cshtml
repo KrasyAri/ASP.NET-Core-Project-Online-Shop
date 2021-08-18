@@ -1,0 +1,54 @@
+﻿@model List<OrderServiceModel>
+
+
+@{ ViewData["Title"] = "All Orders"; }
+
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+
+<div class="row">
+    <div class="col-8">
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>Order №</th>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Product Quantity</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    foreach (var item in order.Products)
+                    {
+                            <tr>
+                                <td scope="col">@order.OrderId</td>
+                                <td scope="col">@item.ProductName</td>
+                                <td scope="col">@item.Price BGN.</td>
+                                <td scope="col" class="text-center">@item.Quantity</td>
+                                <td scope="col" class="text-center">@item.TotalPrice BGN.</td>
+                            </tr> }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Order Total Amount:</td>
+                        <td scope="col" class="text-center">@order.TotalAmount BGN.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td scope="col">
+                            <a class="btn btn-danger" asp-area="" asp-controller="Order" asp-action="OrderShippingDetails">Order Shipping Details</a>
+                        </td>
+                    </tr>}
+            </tbody>
+        </table>
+    </div>
+</div>
+

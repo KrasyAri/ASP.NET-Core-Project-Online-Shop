@@ -3,12 +3,10 @@
     using ASP.NET_Core_Project_Online_Shop.Data;
     using ASP.NET_Core_Project_Online_Shop.Data.Models;
     using ASP.NET_Core_Project_Online_Shop.Services.Cart.Models;
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     public class CartService : ICartService
     {

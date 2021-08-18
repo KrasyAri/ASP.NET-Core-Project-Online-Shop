@@ -16,6 +16,7 @@ namespace ASP.NET_Core_Project_Online_Shop
     using ASP.NET_Core_Project_Online_Shop.Services.Cart;
     using ASP.NET_Core_Project_Online_Shop.Services.Order;
     using ASP.NET_Core_Project_Online_Shop.Services.ShippingDetails;
+    using ASP.NET_Core_Project_Online_Shop.Areas.Administration.Services;
 
     public class Startup
     {
@@ -57,6 +58,7 @@ namespace ASP.NET_Core_Project_Online_Shop
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IShippingDetailsService, ShippingDetailsService>();
+            services.AddTransient<IAllOrdersService, AllOrdersService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
