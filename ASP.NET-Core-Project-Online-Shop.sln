@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP.NET-Core-Project-Online-Shop", "ASP.NET-Core-Project-Online-Shop.csproj", "{87CB0383-7DCE-4F0B-8311-A20FFBEED57B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET-Core-Project-Online-Shop.Test", "..\ASP.NET-Core-Project-Online-Shop.Test\ASP.NET-Core-Project-Online-Shop.Test.csproj", "{389F5F73-A7D2-4809-BD66-F4B560619DE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET-Core-Project-Online-Shop.Tests", "..\ASP.NET-Core-Project-Online-Shop.Tests\ASP.NET-Core-Project-Online-Shop.Tests.csproj", "{BAB05C5C-49AE-4ED2-80CC-65B4E20F0CC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{87CB0383-7DCE-4F0B-8311-A20FFBEED57B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87CB0383-7DCE-4F0B-8311-A20FFBEED57B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87CB0383-7DCE-4F0B-8311-A20FFBEED57B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{389F5F73-A7D2-4809-BD66-F4B560619DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{389F5F73-A7D2-4809-BD66-F4B560619DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{389F5F73-A7D2-4809-BD66-F4B560619DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{389F5F73-A7D2-4809-BD66-F4B560619DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAB05C5C-49AE-4ED2-80CC-65B4E20F0CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB05C5C-49AE-4ED2-80CC-65B4E20F0CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB05C5C-49AE-4ED2-80CC-65B4E20F0CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB05C5C-49AE-4ED2-80CC-65B4E20F0CC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
